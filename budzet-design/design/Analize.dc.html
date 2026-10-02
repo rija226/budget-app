@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Analize</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&amp;display=block">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 390px; height: 1000px; box-sizing: border-box; display: flex; flex-direction: column; background: {{c.surface}}; color: {{c.onSurface}}; font-family: Manrope, sans-serif; overflow: hidden">
+
+<header style="height: 64px; flex-shrink: 0; display: flex; align-items: center; padding: 0 16px">
+<h1 style="margin: 0; flex-grow: 1; font-size: 22px; line-height: 28px; font-weight: 700">Izvještaji</h1>
+</header>
+
+<nav aria-label="Vrsta izvještaja" style="flex-shrink: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid {{c.outlineVariant}}">
+<a href="{{L.rep}}" style="height: 48px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 12px; text-decoration: none; color: {{c.onSurfaceVariant}}; font-size: 14px; font-weight: 700"><span>Pregled</span><span style="width: 64px; height: 3px; background: transparent"></span></a>
+<a href="{{L.an}}" aria-current="page" style="height: 48px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 12px; text-decoration: none; color: {{c.primary}}; font-size: 14px; font-weight: 700"><span>Analize</span><span style="width: 64px; height: 3px; border-radius: 3px 3px 0 0; background: {{c.primary}}"></span></a>
+</nav>
+
+<main style="flex-grow: 1; display: flex; flex-direction: column; gap: 12px; padding: 16px 16px 24px">
+
+<section style="border: 1px solid {{c.outlineVariant}}; border-radius: 16px; padding: 16px; display: flex; gap: 12px; align-items: flex-start">
+<span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0; color: {{c.onSurfaceVariant}}">hourglass_top</span>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<h2 style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 700">25.09.–24.10.</h2>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">Period je u toku. Analiza se piše kad stigne sljedeća plata.</p>
+</div>
+</section>
+
+<a href="{{L.and}}" style="background: {{c.surfaceContainerLow}}; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: {{c.onSurface}}">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap">
+<h2 style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 700">25.08.–24.09.</h2>
+<span style="display: flex; align-items: center; gap: 4px; height: 28px; padding: 0 10px; border-radius: 8px; background: {{c.okContainer}}; color: {{c.onOkContainer}}; font-size: 12px; font-weight: 700"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 16px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">check_circle</span>Spremna</span>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">Potrošeno 742,30 € od 780,00 €. Najveća promjena: Dostava, +45%.</p>
+<div style="display: flex; align-items: center; gap: 6px; font-size: 14px; line-height: 20px; font-weight: 700; color: {{c.primary}}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0">savings</span>3 savjeta · do 58,00 € mjesečno</div>
+</a>
+
+<a href="{{L.and}}" style="background: {{c.surfaceContainerLow}}; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: {{c.onSurface}}">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap">
+<h2 style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 700">25.07.–24.08.</h2>
+<span style="display: flex; align-items: center; gap: 4px; height: 28px; padding: 0 10px; border-radius: 8px; background: {{c.okContainer}}; color: {{c.onOkContainer}}; font-size: 12px; font-weight: 700"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 16px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">check_circle</span>Spremna</span>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">Potrošeno 801,15 € od 780,00 €, 21,15 € preko budžeta.</p>
+<div style="display: flex; align-items: center; gap: 6px; font-size: 14px; line-height: 20px; font-weight: 700; color: {{c.primary}}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0">savings</span>3 savjeta · do 64,00 € mjesečno</div>
+</a>
+
+<section style="background: {{c.surfaceContainerLow}}; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap">
+<h2 style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 700">25.06.–24.07.</h2>
+<span style="display: flex; align-items: center; gap: 4px; height: 28px; padding: 0 10px; border-radius: 8px; background: {{c.surfaceContainerHighest}}; color: {{c.onSurfaceVariant}}; font-size: 12px; font-weight: 700"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 16px; line-height: 1; font-weight: 400; letter-spacing: 0">progress_activity</span>Priprema se…</span>
+</div>
+<div style="height: 4px; border-radius: 2px; background: {{c.surfaceContainerHighest}}; overflow: hidden"><div style="width: 38%; height: 4px; border-radius: 2px; background: {{c.primary}}"></div></div>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">Analiza se priprema… Javićemo ti notifikacijom.</p>
+</section>
+
+<section style="background: {{c.surfaceContainerLow}}; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap">
+<h2 style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 700">25.05.–24.06.</h2>
+<span style="display: flex; align-items: center; gap: 4px; height: 28px; padding: 0 10px; border-radius: 8px; background: {{c.errorContainer}}; color: {{c.onErrorContainer}}; font-size: 12px; font-weight: 700"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 16px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">error</span>Nije uspjelo</span>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">Nema internet veze. Podaci su sačuvani.</p>
+<button style="align-self: flex-start; height: 40px; padding: 0 16px 0 12px; border-radius: 20px; border: 1px solid {{c.outline}}; background: transparent; color: {{c.primary}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0">refresh</span>Pokušaj ponovo</button>
+</section>
+
+</main>
+
+<nav aria-label="Glavna navigacija" style="height: 80px; flex-shrink: 0; box-sizing: border-box; padding: 12px 0 16px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: {{c.surfaceContainer}}">
+<a href="{{L.home}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: {{c.onSurfaceVariant}}"><span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">home</span></span><span style="font-size: 12px; line-height: 16px; font-weight: 600; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">Početna</span></a>
+<a href="{{L.tx}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: {{c.onSurfaceVariant}}"><span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">receipt_long</span></span><span style="font-size: 12px; line-height: 16px; font-weight: 600; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">Transakcije</span></a>
+<a href="{{L.rep}}" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: {{c.onSurface}}"><span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center; background: {{c.secondaryContainer}}; color: {{c.onSecondaryContainer}}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">bar_chart</span></span><span style="font-size: 12px; line-height: 16px; font-weight: 800; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">Izvještaji</span></a>
+<a href="{{L.bud}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: {{c.onSurfaceVariant}}"><span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">account_balance_wallet</span></span><span style="font-size: 12px; line-height: 16px; font-weight: 600; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">Budžet</span></a>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":1000}}'>
+var PAL={light:{primary:'#33618D',onPrimary:'#FFFFFF',primaryContainer:'#D1E4FF',onPrimaryContainer:'#0F4A73',secondary:'#535F70',onSecondary:'#FFFFFF',secondaryContainer:'#D7E3F7',onSecondaryContainer:'#3B4858',tertiary:'#6B5778',onTertiary:'#FFFFFF',tertiaryContainer:'#F2DAFF',onTertiaryContainer:'#523F5F',error:'#BA1A1A',onError:'#FFFFFF',errorContainer:'#FFDAD6',onErrorContainer:'#93000A',surface:'#F8F9FC',onSurface:'#191C20',surfaceVariant:'#DEE3EB',onSurfaceVariant:'#42474E',outline:'#72777F',outlineVariant:'#C2C7CF',surfaceContainerLowest:'#FFFFFF',surfaceContainerLow:'#F2F3F7',surfaceContainer:'#ECEEF1',surfaceContainerHigh:'#E6E8EB',surfaceContainerHighest:'#E1E2E6',inverseSurface:'#2E3135',inverseOnSurface:'#EFF0F4',inversePrimary:'#9ECAFC',scrim:'rgba(0,0,0,0.32)',disabledBg:'rgba(25,28,32,0.12)',disabledFg:'rgba(25,28,32,0.38)',ok:'#2E6A44',onOk:'#FFFFFF',okContainer:'#C8EECF',onOkContainer:'#0F5130',warning:'#845F00',onWarning:'#FFFFFF',warningContainer:'#FFDF9F',onWarningContainer:'#5F4400'},dark:{primary:'#9ECAFC',onPrimary:'#003256',primaryContainer:'#154A72',onPrimaryContainer:'#D1E4FF',secondary:'#BBC7DB',onSecondary:'#253140',secondaryContainer:'#3B4858',onSecondaryContainer:'#D7E3F7',tertiary:'#D7BEE4',onTertiary:'#3B2948',tertiaryContainer:'#523F5F',onTertiaryContainer:'#F2DAFF',error:'#FFB4AB',onError:'#690005',errorContainer:'#93000A',onErrorContainer:'#FFDAD6',surface:'#111418',onSurface:'#E1E2E8',surfaceVariant:'#42474E',onSurfaceVariant:'#C2C7CF',outline:'#8C9199',outlineVariant:'#42474E',surfaceContainerLowest:'#0C0E12',surfaceContainerLow:'#191C20',surfaceContainer:'#1D2024',surfaceContainerHigh:'#282A2F',surfaceContainerHighest:'#33353A',inverseSurface:'#E1E2E8',inverseOnSurface:'#2E3135',inversePrimary:'#33618D',scrim:'rgba(0,0,0,0.6)',disabledBg:'rgba(225,226,232,0.12)',disabledFg:'rgba(225,226,232,0.38)',ok:'#93D5A6',onOk:'#00391D',okContainer:'#15522F',onOkContainer:'#AFF2C1',warning:'#F4BF4F',onWarning:'#412D00',warningContainer:'#5F4400',onWarningContainer:'#FFDF9F'}};
+function links(d){var x=d?'Tamno':'';return {home:'Pocetna'+x+'.dc.html',tx:'Transakcije'+x+'.dc.html',txd:'Transakcija'+x+'.dc.html',rep:'Izvjestaji'+x+'.dc.html',bud:'Budzet'+x+'.dc.html',zp:'ZaProvjeru'+x+'.dc.html',set:'Podesavanja'+x+'.dc.html',an:'Analize'+x+'.dc.html',and:'Analiza'+x+'.dc.html',log:'SiroviLog'+x+'.dc.html'};}
+class Component extends DCLogic {
+  renderVals() {
+    var dark = (this.props.theme ?? 'light') === 'dark';
+    return { c: dark ? PAL.dark : PAL.light, L: links(dark) };
+  }
+}
+</script>
+</body>
+</html>

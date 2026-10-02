@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Budžet · dizajn sistem</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&amp;display=block">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 1440px; height: 2000px; box-sizing: border-box; padding: 64px; background: #F8F9FC; color: #191C20; font-family: Manrope, sans-serif; display: flex; flex-direction: column; gap: 40px">
+<header style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-size: 14px; line-height: 20px; font-weight: 700; color: #33618D; letter-spacing: 0.5px">BUDŽET · MATERIAL 3 TEMA</p>
+<h1 style="margin: 0; font-size: 45px; line-height: 52px; font-weight: 800">Dizajn sistem</h1>
+<p style="margin: 0; font-size: 16px; line-height: 24px; color: #42474E; max-width: 760px">Fiksna paleta mapirana na Material 3 uloge, spremna za lightColorScheme i darkColorScheme. Dinamičke boje se mogu dodati kasnije bez promjene komponenti. Font: Manrope (Google Fonts, downloadable), iznosi uvijek sa tabelarnim ciframa.</p>
+</div>
+<div style="display: flex; gap: 12px; flex-shrink: 0">
+<span style="height: 32px; padding: 0 12px; border-radius: 8px; background: #D1E4FF; color: #0F4A73; font-size: 14px; font-weight: 700; display: flex; align-items: center">1.500,00 €</span>
+<span style="height: 32px; padding: 0 12px; border-radius: 8px; background: #E1E2E6; color: #42474E; font-size: 14px; font-weight: 700; display: flex; align-items: center">30.09. · 14:32</span>
+</div>
+</header>
+
+<div style="display: flex; gap: 48px; align-items: flex-start">
+
+<section style="width: 820px; flex-shrink: 0; display: flex; flex-direction: column; gap: 16px">
+<div style="display: grid; grid-template-columns: 250px repeat(2, minmax(0, 1fr)); gap: 16px; align-items: end; padding: 0 16px">
+<h2 style="margin: 0; font-size: 22px; line-height: 28px; font-weight: 700">Boje</h2>
+<p style="margin: 0; font-size: 14px; font-weight: 700; color: #42474E">Svijetla</p>
+<p style="margin: 0; font-size: 14px; font-weight: 700; color: #42474E">Tamna</p>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E1E2E6; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column">
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column">
+<p style="margin: 0; padding: 14px 16px 6px; font-size: 12px; line-height: 16px; font-weight: 800; letter-spacing: 0.6px; color: #33618D; background: #F2F3F7">{{g.name}}</p>
+<sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4">
+<div style="display: grid; grid-template-columns: 250px repeat(2, minmax(0, 1fr)); gap: 16px; align-items: center; padding: 6px 16px; border-top: 1px solid #ECEEF1">
+<div style="display: flex; flex-direction: column">
+<span style="font-size: 14px; line-height: 20px; font-weight: 700; font-family: ui-monospace, Menlo, monospace">{{r.role}}</span>
+<span style="font-size: 12px; line-height: 16px; color: #72777F">{{r.use}}</span>
+</div>
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="width: 44px; height: 28px; border-radius: 8px; background: {{r.l}}; border: 1px solid rgba(0,0,0,0.12); flex-shrink: 0"></span>
+<span style="font-size: 13px; font-family: ui-monospace, Menlo, monospace; color: #42474E">{{r.l}}</span>
+</div>
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="width: 44px; height: 28px; border-radius: 8px; background: {{r.d}}; border: 1px solid rgba(0,0,0,0.12); flex-shrink: 0"></span>
+<span style="font-size: 13px; font-family: ui-monospace, Menlo, monospace; color: #42474E">{{r.d}}</span>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</section>
+
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 40px">
+
+<section style="display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 22px; line-height: 28px; font-weight: 700">Status limita</h2>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: #42474E">Nikad samo boja: uvijek ikona i tekst. Traka u stanju „U redu“ je primarna boja, bez isticanja.</p>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #FFFFFF; border: 1px solid #E1E2E6; border-radius: 12px">
+<span style="display: flex; align-items: center; gap: 4px; height: 28px; padding: 0 10px; border-radius: 8px; background: #C8EECF; color: #0F5130; font-size: 13px; font-weight: 700; flex-shrink: 0"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 16px; line-height: 1; font-variation-settings: 'FILL' 1">check_circle</span>72%</span>
+<div style="display: flex; flex-direction: column"><span style="font-size: 14px; font-weight: 700">U redu · ispod 80%</span><span style="font-size: 12px; color: #72777F">ok / okContainer · traka: primary</span></div>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #FFFFFF; border: 1px solid #E1E2E6; border-radius: 12px">
+<span style="display: flex; align-items: center; gap: 4px; height: 28px; padding: 0 10px; border-radius: 8px; background: #FFDF9F; color: #5F4400; font-size: 13px; font-weight: 700; flex-shrink: 0"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 16px; line-height: 1; font-variation-settings: 'FILL' 1">warning</span>96%</span>
+<div style="display: flex; flex-direction: column"><span style="font-size: 14px; font-weight: 700">Blizu limita · 80–99%</span><span style="font-size: 12px; color: #72777F">warning / warningContainer · traka: warning</span></div>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #FFFFFF; border: 1px solid #E1E2E6; border-radius: 12px">
+<span style="display: flex; align-items: center; gap: 4px; height: 28px; padding: 0 10px; border-radius: 8px; background: #FFDAD6; color: #93000A; font-size: 13px; font-weight: 700; flex-shrink: 0"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 16px; line-height: 1; font-variation-settings: 'FILL' 1">error</span>124%</span>
+<div style="display: flex; flex-direction: column"><span style="font-size: 14px; font-weight: 700">Preko limita · 100% i više</span><span style="font-size: 12px; color: #72777F">error / errorContainer · tačno 100% piše „Limit dostignut“</span></div>
+</div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 22px; line-height: 28px; font-weight: 700">Tipografija · Manrope</h2>
+<div style="background: #FFFFFF; border: 1px solid #E1E2E6; border-radius: 16px; overflow: hidden">
+<sc-for list="{{type}}" as="t" hint-placeholder-count="15">
+<div style="display: flex; align-items: baseline; gap: 16px; padding: 10px 16px; border-top: {{t.divider}}">
+<div style="width: 150px; flex-shrink: 0; display: flex; flex-direction: column">
+<span style="font-size: 13px; line-height: 18px; font-weight: 700; font-family: ui-monospace, Menlo, monospace">{{t.name}}</span>
+<span style="font-size: 12px; line-height: 16px; color: #72777F">{{t.spec}}</span>
+</div>
+<span style="min-width: 0; font-size: {{t.size}}px; line-height: {{t.lh}}px; font-weight: {{t.w}}; font-variant-numeric: tabular-nums; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{t.sample}}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="display: flex; gap: 32px">
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 22px; line-height: 28px; font-weight: 700">Razmaci (dp)</h2>
+<sc-for list="{{space}}" as="s" hint-placeholder-count="7">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="width: 72px; font-size: 13px; font-family: ui-monospace, Menlo, monospace">{{s.name}}</span>
+<span style="width: {{s.v}}px; height: 16px; border-radius: 4px; background: #33618D"></span>
+<span style="font-size: 13px; color: #42474E">{{s.v}}</span>
+</div>
+</sc-for>
+</div>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 22px; line-height: 28px; font-weight: 700">Zaobljenja</h2>
+<sc-for list="{{radii}}" as="r" hint-placeholder-count="6">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="width: 40px; height: 28px; border-radius: {{r.css}}; background: #D1E4FF; border: 1px solid #33618D; flex-shrink: 0"></span>
+<div style="display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 700">{{r.name}} · {{r.v}}</span><span style="font-size: 12px; color: #72777F">{{r.use}}</span></div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 22px; line-height: 28px; font-weight: 700">Elevacija</h2>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: #42474E">Tonska, ne sjenka: nivo se izražava bojom površine. Sjenku ima samo FAB.</p>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+<div style="height: 96px; border-radius: 16px; background: #F2F3F7; padding: 12px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end"><span style="font-size: 13px; font-weight: 700">Nivo 0–1 · 0 dp</span><span style="font-size: 12px; color: #42474E">Kartice, sheet</span></div>
+<div style="height: 96px; border-radius: 16px; background: #ECEEF1; padding: 12px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end"><span style="font-size: 13px; font-weight: 700">Nivo 2 · 3 dp</span><span style="font-size: 12px; color: #42474E">Navigacija, meni</span></div>
+<div style="height: 96px; border-radius: 16px; background: #E6E8EB; padding: 12px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end"><span style="font-size: 13px; font-weight: 700">Nivo 3 · 6 dp</span><span style="font-size: 12px; color: #42474E">Dijalog</span></div>
+<div style="height: 96px; border-radius: 16px; background: #D1E4FF; padding: 12px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.12)"><span style="font-size: 13px; font-weight: 700">Nivo 3 + sjenka</span><span style="font-size: 12px; color: #42474E">FAB</span></div>
+</div>
+</section>
+
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var G = [
+      ['PRIMARNA', [['primary','Traka, aktivni elementi','#33618D','#9ECAFC'],['onPrimary','Tekst na primary','#FFFFFF','#003256'],['primaryContainer','Hero kartica, FAB','#D1E4FF','#154A72'],['onPrimaryContainer','Tekst u hero kartici','#0F4A73','#D1E4FF'],['inversePrimary','Akcija u snackbaru','#9ECAFC','#33618D']]],
+      ['SEKUNDARNA', [['secondary','Pomoćni elementi','#535F70','#BBC7DB'],['onSecondary','','#FFFFFF','#253140'],['secondaryContainer','Indikator navigacije, avatar','#D7E3F7','#3B4858'],['onSecondaryContainer','','#3B4858','#D7E3F7']]],
+      ['TERCIJARNA · AI PRIJEDLOZI', [['tertiary','Isprekidana oznaka, iskra','#6B5778','#D7BEE4'],['onTertiary','','#FFFFFF','#3B2948'],['tertiaryContainer','Dugme Potvrdi (AI)','#F2DAFF','#523F5F'],['onTertiaryContainer','','#523F5F','#F2DAFF']]],
+      ['GREŠKA · PREKO LIMITA', [['error','Prekoračenje, brisanje','#BA1A1A','#FFB4AB'],['onError','','#FFFFFF','#690005'],['errorContainer','Status pilula „preko“','#FFDAD6','#93000A'],['onErrorContainer','','#93000A','#FFDAD6']]],
+      ['POVRŠINE', [['surface','Pozadina ekrana','#F8F9FC','#111418'],['onSurface','Glavni tekst','#191C20','#E1E2E8'],['surfaceVariant','','#DEE3EB','#42474E'],['onSurfaceVariant','Sporedni tekst','#42474E','#C2C7CF'],['surfaceContainerLowest','','#FFFFFF','#0C0E12'],['surfaceContainerLow','Kartice, lista','#F2F3F7','#191C20'],['surfaceContainer','Navigacija','#ECEEF1','#1D2024'],['surfaceContainerHigh','Dijalog, hero (prekoračeno)','#E6E8EB','#282A2F'],['surfaceContainerHighest','Podloga trake, oznake','#E1E2E6','#33353A'],['inverseSurface','Snackbar','#2E3135','#E1E2E8'],['inverseOnSurface','','#EFF0F4','#2E3135'],['outline','Okvir polja','#72777F','#8C9199'],['outlineVariant','Razdjelnik','#C2C7CF','#42474E'],['scrim','Uz alfa 32%','#000000','#000000']]],
+      ['STATUS · PROŠIRENJE (CompositionLocal)', [['ok','Ikona „U redu“, plata','#2E6A44','#93D5A6'],['onOk','','#FFFFFF','#00391D'],['okContainer','Pilula „U redu“','#C8EECF','#15522F'],['onOkContainer','','#0F5130','#AFF2C1'],['warning','Traka i tekst 80–99%','#845F00','#F4BF4F'],['onWarning','','#FFFFFF','#412D00'],['warningContainer','Pilula „Blizu limita“, baner','#FFDF9F','#5F4400'],['onWarningContainer','','#5F4400','#FFDF9F']]]
+    ];
+    var groups = G.map(function (g) { return { name: g[0], rows: g[1].map(function (r) { return { role: r[0], use: r[1] || ' ', l: r[2], d: r[3] }; }) }; });
+    var T = [
+      ['displayLarge','57/64 · 700','23,40 €',57,64,700],
+      ['displayMedium','45/52 · 700','412,60 €',45,52,700],
+      ['displaySmall','36/44 · 700','780,00 €',36,44,700],
+      ['headlineLarge','32/40 · 700','25,00 KM',32,40,700],
+      ['headlineMedium','28/36 · 700','Podesimo praćenje',28,36,700],
+      ['headlineSmall','24/32 · 700','25.08.–24.09.',24,32,700],
+      ['titleLarge','22/28 · 700','Analiza perioda',22,28,700],
+      ['titleMedium','16/24 · 600','Restorani i kafići',16,24,600],
+      ['titleSmall','14/20 · 700','Kategorije',14,20,700],
+      ['bodyLarge','16/24 · 400','Dozvoli ograničena podešavanja',16,24,400],
+      ['bodyMedium','14/20 · 400','Potrošeno 412,60 € od 780,00 €',14,20,400],
+      ['bodySmall','12/16 · 400','Danas, 14:32',12,16,400],
+      ['labelLarge','14/20 · 700','Sačuvaj',14,20,700],
+      ['labelMedium','12/16 · 700','Transakcije',12,16,700],
+      ['labelSmall','11/16 · 700','≈ 12,78 €',11,16,700]
+    ];
+    var type = T.map(function (t, i) { return { name: t[0], spec: t[1] + ' sp', sample: t[2], size: t[3], lh: t[4], w: t[5], divider: i ? '1px solid #ECEEF1' : 'none' }; });
+    var space = [['xxs',4],['xs',8],['sm',12],['md',16],['lg',24],['xl',32],['xxl',48]].map(function (s) { return { name: s[0], v: s[1] }; });
+    var radii = [
+      ['extraSmall','4 dp','4px','Polja, trake (4 dp visine: pun krug)'],
+      ['small','8 dp','8px','Čipovi, oznake kategorije, status pilule'],
+      ['medium','12 dp','12px','Stavke u Za provjeru, log'],
+      ['large','16 dp','16px','Kartice, FAB'],
+      ['extraLarge','28 dp','28px','Hero kartica, dijalog, bottom sheet'],
+      ['full','50%','999px','Dugmad, indikator navigacije, trake']
+    ].map(function (r) { return { name: r[0], v: r[1], css: r[2], use: r[3] }; });
+    return { groups: groups, type: type, space: space, radii: radii };
+  }
+}
+</script>
+</body>
+</html>

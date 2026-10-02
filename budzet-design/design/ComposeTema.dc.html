@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Compose tema</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=block">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 1600px; height: 2100px; box-sizing: border-box; padding: 56px; background: #111418; color: #E1E2E8; font-family: Manrope, sans-serif; display: flex; flex-direction: column; gap: 32px">
+<header style="display: flex; flex-direction: column; gap: 8px">
+<h1 style="margin: 0; font-size: 36px; line-height: 44px; font-weight: 800">Compose tema</h1>
+<p style="margin: 0; font-size: 16px; line-height: 24px; color: #C2C7CF">Za kopiranje u ui/theme. Status boje (ok, warning) idu kroz CompositionLocal; „preko limita“ koristi error iz ColorScheme.</p>
+</header>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: start">
+
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 800; color: #9ECAFC">Color.kt</h2>
+<pre style="margin: 0; padding: 20px; border-radius: 16px; background: #1D2024; color: #E1E2E8; font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; line-height: 17px; white-space: pre; overflow: hidden">package rs.budzet.ui.theme
+
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.ui.graphics.Color
+
+val LightColors = lightColorScheme(
+  primary = Color(0xFF33618D),
+  onPrimary = Color(0xFFFFFFFF),
+  primaryContainer = Color(0xFFD1E4FF),
+  onPrimaryContainer = Color(0xFF0F4A73),
+  inversePrimary = Color(0xFF9ECAFC),
+  secondary = Color(0xFF535F70),
+  onSecondary = Color(0xFFFFFFFF),
+  secondaryContainer = Color(0xFFD7E3F7),
+  onSecondaryContainer = Color(0xFF3B4858),
+  tertiary = Color(0xFF6B5778),
+  onTertiary = Color(0xFFFFFFFF),
+  tertiaryContainer = Color(0xFFF2DAFF),
+  onTertiaryContainer = Color(0xFF523F5F),
+  error = Color(0xFFBA1A1A),
+  onError = Color(0xFFFFFFFF),
+  errorContainer = Color(0xFFFFDAD6),
+  onErrorContainer = Color(0xFF93000A),
+  background = Color(0xFFF8F9FC),
+  onBackground = Color(0xFF191C20),
+  surface = Color(0xFFF8F9FC),
+  onSurface = Color(0xFF191C20),
+  surfaceVariant = Color(0xFFDEE3EB),
+  onSurfaceVariant = Color(0xFF42474E),
+  surfaceTint = Color(0xFF33618D),
+  inverseSurface = Color(0xFF2E3135),
+  inverseOnSurface = Color(0xFFEFF0F4),
+  outline = Color(0xFF72777F),
+  outlineVariant = Color(0xFFC2C7CF),
+  scrim = Color(0xFF000000),
+  surfaceBright = Color(0xFFF8F9FC),
+  surfaceDim = Color(0xFFD8DADD),
+  surfaceContainerLowest = Color(0xFFFFFFFF),
+  surfaceContainerLow = Color(0xFFF2F3F7),
+  surfaceContainer = Color(0xFFECEEF1),
+  surfaceContainerHigh = Color(0xFFE6E8EB),
+  surfaceContainerHighest = Color(0xFFE1E2E6),
+)
+
+val DarkColors = darkColorScheme(
+  primary = Color(0xFF9ECAFC),
+  onPrimary = Color(0xFF003256),
+  primaryContainer = Color(0xFF154A72),
+  onPrimaryContainer = Color(0xFFD1E4FF),
+  inversePrimary = Color(0xFF33618D),
+  secondary = Color(0xFFBBC7DB),
+  onSecondary = Color(0xFF253140),
+  secondaryContainer = Color(0xFF3B4858),
+  onSecondaryContainer = Color(0xFFD7E3F7),
+  tertiary = Color(0xFFD7BEE4),
+  onTertiary = Color(0xFF3B2948),
+  tertiaryContainer = Color(0xFF523F5F),
+  onTertiaryContainer = Color(0xFFF2DAFF),
+  error = Color(0xFFFFB4AB),
+  onError = Color(0xFF690005),
+  errorContainer = Color(0xFF93000A),
+  onErrorContainer = Color(0xFFFFDAD6),
+  background = Color(0xFF111418),
+  onBackground = Color(0xFFE1E2E8),
+  surface = Color(0xFF111418),
+  onSurface = Color(0xFFE1E2E8),
+  surfaceVariant = Color(0xFF42474E),
+  onSurfaceVariant = Color(0xFFC2C7CF),
+  surfaceTint = Color(0xFF9ECAFC),
+  inverseSurface = Color(0xFFE1E2E8),
+  inverseOnSurface = Color(0xFF2E3135),
+  outline = Color(0xFF8C9199),
+  outlineVariant = Color(0xFF42474E),
+  scrim = Color(0xFF000000),
+  surfaceBright = Color(0xFF37393E),
+  surfaceDim = Color(0xFF111418),
+  surfaceContainerLowest = Color(0xFF0C0E12),
+  surfaceContainerLow = Color(0xFF191C20),
+  surfaceContainer = Color(0xFF1D2024),
+  surfaceContainerHigh = Color(0xFF282A2F),
+  surfaceContainerHighest = Color(0xFF33353A),
+)</pre>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 800; color: #9ECAFC">StatusColors.kt</h2>
+<pre style="margin: 0; padding: 20px; border-radius: 16px; background: #1D2024; color: #E1E2E8; font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; line-height: 17px; white-space: pre; overflow: hidden">@Immutable
+data class StatusColors(
+  val ok: Color, val onOk: Color,
+  val okContainer: Color, val onOkContainer: Color,
+  val warning: Color, val onWarning: Color,
+  val warningContainer: Color,
+  val onWarningContainer: Color,
+)
+
+val LightStatus = StatusColors(
+  ok = Color(0xFF2E6A44), onOk = Color(0xFFFFFFFF),
+  okContainer = Color(0xFFC8EECF),
+  onOkContainer = Color(0xFF0F5130),
+  warning = Color(0xFF845F00),
+  onWarning = Color(0xFFFFFFFF),
+  warningContainer = Color(0xFFFFDF9F),
+  onWarningContainer = Color(0xFF5F4400),
+)
+
+val DarkStatus = StatusColors(
+  ok = Color(0xFF93D5A6), onOk = Color(0xFF00391D),
+  okContainer = Color(0xFF15522F),
+  onOkContainer = Color(0xFFAFF2C1),
+  warning = Color(0xFFF4BF4F),
+  onWarning = Color(0xFF412D00),
+  warningContainer = Color(0xFF5F4400),
+  onWarningContainer = Color(0xFFFFDF9F),
+)
+
+val LocalStatus = staticCompositionLocalOf { LightStatus }
+
+enum class LimitStatus { Ok, Warning, Over, NoLimit }
+
+fun limitStatus(spent: Long, limit: Long?): LimitStatus =
+  when {
+    limit == null -&gt; LimitStatus.NoLimit
+    spent &gt;= limit -&gt; LimitStatus.Over   // 100%+
+    spent * 100 &gt;= limit * 80 -&gt; LimitStatus.Warning
+    else -&gt; LimitStatus.Ok
+  }
+// iznosi u centima (Long), nikad Double</pre>
+
+<h2 style="margin: 16px 0 0; font-size: 14px; font-weight: 800; color: #9ECAFC">Shapes.kt · Spacing.kt</h2>
+<pre style="margin: 0; padding: 20px; border-radius: 16px; background: #1D2024; color: #E1E2E8; font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; line-height: 17px; white-space: pre; overflow: hidden">val BudzetShapes = Shapes(
+  extraSmall = RoundedCornerShape(4.dp),
+  small = RoundedCornerShape(8.dp),
+  medium = RoundedCornerShape(12.dp),
+  large = RoundedCornerShape(16.dp),
+  extraLarge = RoundedCornerShape(28.dp),
+)
+
+object Spacing {
+  val xxs = 4.dp;  val xs = 8.dp;  val sm = 12.dp
+  val md = 16.dp;  val lg = 24.dp; val xl = 32.dp
+  val xxl = 48.dp
+  val screen = 16.dp      // bočna margina
+  val rowMin = 72.dp      // red transakcije
+  val bar = 8.dp          // visina trake limita
+}</pre>
+
+<h2 style="margin: 16px 0 0; font-size: 14px; font-weight: 800; color: #9ECAFC">Money.kt</h2>
+<pre style="margin: 0; padding: 20px; border-radius: 16px; background: #1D2024; color: #E1E2E8; font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; line-height: 17px; white-space: pre; overflow: hidden">private val sym = DecimalFormatSymbols().apply {
+  decimalSeparator = ','; groupingSeparator = '.'
+}
+private val fmt = DecimalFormat("#,##0.00", sym)
+
+// 150000 -&gt; "1.500,00 €" (NBSP da se ne lomi)
+fun Long.eur() = fmt.format(this / 100.0) + " €"
+fun Long.km() = fmt.format(this / 100.0) + " KM"
+
+val dayFmt = DateTimeFormatter.ofPattern("dd.MM.")
+val timeFmt = DateTimeFormatter.ofPattern("HH:mm")</pre>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 800; color: #9ECAFC">Type.kt</h2>
+<pre style="margin: 0; padding: 20px; border-radius: 16px; background: #1D2024; color: #E1E2E8; font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; line-height: 17px; white-space: pre; overflow: hidden">val provider = GoogleFont.Provider(
+  "com.google.android.gms.fonts",
+  "com.google.android.gms",
+  R.array.com_google_android_gms_fonts_certs,
+)
+private val m = GoogleFont("Manrope")
+val Manrope = FontFamily(
+  Font(m, provider, FontWeight.Normal),
+  Font(m, provider, FontWeight.SemiBold),
+  Font(m, provider, FontWeight.Bold),
+  Font(m, provider, FontWeight.ExtraBold),
+)
+
+private fun s(size: Int, lh: Int, w: FontWeight,
+  ls: Double = 0.0) = TextStyle(
+  fontFamily = Manrope, fontWeight = w,
+  fontSize = size.sp, lineHeight = lh.sp,
+  letterSpacing = ls.sp,
+  fontFeatureSettings = "tnum",
+)
+
+val BudzetType = Typography(
+  displayLarge = s(57, 64, FontWeight.Bold, -0.5),
+  displayMedium = s(45, 52, FontWeight.Bold),
+  displaySmall = s(36, 44, FontWeight.Bold),
+  headlineLarge = s(32, 40, FontWeight.Bold),
+  headlineMedium = s(28, 36, FontWeight.Bold),
+  headlineSmall = s(24, 32, FontWeight.Bold),
+  titleLarge = s(22, 28, FontWeight.Bold),
+  titleMedium = s(16, 24, FontWeight.SemiBold, 0.1),
+  titleSmall = s(14, 20, FontWeight.Bold, 0.1),
+  bodyLarge = s(16, 24, FontWeight.Normal, 0.2),
+  bodyMedium = s(14, 20, FontWeight.Normal, 0.2),
+  bodySmall = s(12, 16, FontWeight.Normal, 0.3),
+  labelLarge = s(14, 20, FontWeight.Bold, 0.1),
+  labelMedium = s(12, 16, FontWeight.Bold, 0.4),
+  labelSmall = s(11, 16, FontWeight.Bold, 0.4),
+)</pre>
+
+<h2 style="margin: 16px 0 0; font-size: 14px; font-weight: 800; color: #9ECAFC">Theme.kt</h2>
+<pre style="margin: 0; padding: 20px; border-radius: 16px; background: #1D2024; color: #E1E2E8; font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; line-height: 17px; white-space: pre; overflow: hidden">@Composable
+fun BudzetTheme(
+  dark: Boolean = isSystemInDarkTheme(),
+  content: @Composable () -&gt; Unit,
+) {
+  // kasnije: dynamicLight/DarkColorScheme(ctx)
+  val colors = if (dark) DarkColors else LightColors
+  val status = if (dark) DarkStatus else LightStatus
+  CompositionLocalProvider(LocalStatus provides status) {
+    MaterialTheme(
+      colorScheme = colors,
+      typography = BudzetType,
+      shapes = BudzetShapes,
+      content = content,
+    )
+  }
+}
+
+// Navigacija: skala fonta za labele max 1.3x
+@Composable
+fun CappedLabel(text: String) {
+  val d = LocalDensity.current
+  val capped = Density(d.density,
+    d.fontScale.coerceAtMost(1.3f))
+  CompositionLocalProvider(LocalDensity provides capped) {
+    Text(text, maxLines = 1,
+      overflow = TextOverflow.Ellipsis)
+  }
+}</pre>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1600,"height":2100}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

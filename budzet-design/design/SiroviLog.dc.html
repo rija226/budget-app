@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Sirovi log notifikacija</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&amp;display=block">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 390px; height: 1150px; box-sizing: border-box; display: flex; flex-direction: column; background: {{c.surface}}; color: {{c.onSurface}}; font-family: Manrope, sans-serif; overflow: hidden">
+
+<header style="height: 64px; flex-shrink: 0; display: flex; align-items: center; gap: 4px; padding: 0 4px">
+<a href="{{L.set}}" aria-label="Nazad" style="width: 48px; height: 48px; border-radius: 24px; display: flex; align-items: center; justify-content: center; color: {{c.onSurface}}; text-decoration: none"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">arrow_back</span></a>
+<h1 style="margin: 0; flex-grow: 1; font-size: 22px; line-height: 28px; font-weight: 700">Sirovi log</h1>
+<button aria-label="Pretraga" style="width: 48px; height: 48px; border: none; border-radius: 24px; background: transparent; color: {{c.onSurfaceVariant}}; display: flex; align-items: center; justify-content: center; padding: 0"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">search</span></button>
+</header>
+
+<div style="display: flex; gap: 8px; padding: 4px 16px 12px; overflow: hidden; flex-shrink: 0">
+<button aria-pressed="true" style="flex-shrink: 0; height: 32px; padding: 0 12px 0 8px; border-radius: 8px; border: none; background: {{c.secondaryContainer}}; color: {{c.onSecondaryContainer}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 4px"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0">check</span>Sve (248)</button>
+<button aria-pressed="false" style="flex-shrink: 0; height: 32px; padding: 0 12px; border-radius: 8px; border: 1px solid {{c.outlineVariant}}; background: transparent; color: {{c.onSurfaceVariant}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700">Neprepoznate (1)</button>
+<button aria-pressed="false" style="flex-shrink: 0; height: 32px; padding: 0 12px; border-radius: 8px; border: 1px solid {{c.outlineVariant}}; background: transparent; color: {{c.onSurfaceVariant}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700">Zanemarene</button>
+</div>
+
+<main style="flex-grow: 1; display: flex; flex-direction: column; gap: 8px; padding: 0 16px 24px">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="7">
+<article style="background: {{c.surfaceContainerLow}}; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+<span style="font-size: 12px; line-height: 16px; font-weight: 700; color: {{c.onSurfaceVariant}}; font-variant-numeric: tabular-nums">{{r.time}}</span>
+<span style="font-size: 12px; line-height: 16px; color: {{c.onSurfaceVariant}}">· {{r.app}}</span>
+<span style="margin-left: auto; display: inline-flex; align-items: center; gap: 4px; min-height: 24px; padding: 0 8px; border-radius: 8px; font-size: 12px; font-weight: 700; background: {{r.bg}}; color: {{r.fg}}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 14px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">{{r.icon}}</span>{{r.status}}</span>
+</div>
+<p style="margin: 0; font-family: ui-monospace, Menlo, monospace; font-size: 12px; line-height: 18px; color: {{c.onSurface}}; white-space: pre-wrap">{{r.text}}</p>
+</article>
+</sc-for>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":1150}}'>
+var PAL={light:{primary:'#33618D',onPrimary:'#FFFFFF',primaryContainer:'#D1E4FF',onPrimaryContainer:'#0F4A73',secondary:'#535F70',onSecondary:'#FFFFFF',secondaryContainer:'#D7E3F7',onSecondaryContainer:'#3B4858',tertiary:'#6B5778',onTertiary:'#FFFFFF',tertiaryContainer:'#F2DAFF',onTertiaryContainer:'#523F5F',error:'#BA1A1A',onError:'#FFFFFF',errorContainer:'#FFDAD6',onErrorContainer:'#93000A',surface:'#F8F9FC',onSurface:'#191C20',surfaceVariant:'#DEE3EB',onSurfaceVariant:'#42474E',outline:'#72777F',outlineVariant:'#C2C7CF',surfaceContainerLowest:'#FFFFFF',surfaceContainerLow:'#F2F3F7',surfaceContainer:'#ECEEF1',surfaceContainerHigh:'#E6E8EB',surfaceContainerHighest:'#E1E2E6',inverseSurface:'#2E3135',inverseOnSurface:'#EFF0F4',inversePrimary:'#9ECAFC',scrim:'rgba(0,0,0,0.32)',disabledBg:'rgba(25,28,32,0.12)',disabledFg:'rgba(25,28,32,0.38)',ok:'#2E6A44',onOk:'#FFFFFF',okContainer:'#C8EECF',onOkContainer:'#0F5130',warning:'#845F00',onWarning:'#FFFFFF',warningContainer:'#FFDF9F',onWarningContainer:'#5F4400'},dark:{primary:'#9ECAFC',onPrimary:'#003256',primaryContainer:'#154A72',onPrimaryContainer:'#D1E4FF',secondary:'#BBC7DB',onSecondary:'#253140',secondaryContainer:'#3B4858',onSecondaryContainer:'#D7E3F7',tertiary:'#D7BEE4',onTertiary:'#3B2948',tertiaryContainer:'#523F5F',onTertiaryContainer:'#F2DAFF',error:'#FFB4AB',onError:'#690005',errorContainer:'#93000A',onErrorContainer:'#FFDAD6',surface:'#111418',onSurface:'#E1E2E8',surfaceVariant:'#42474E',onSurfaceVariant:'#C2C7CF',outline:'#8C9199',outlineVariant:'#42474E',surfaceContainerLowest:'#0C0E12',surfaceContainerLow:'#191C20',surfaceContainer:'#1D2024',surfaceContainerHigh:'#282A2F',surfaceContainerHighest:'#33353A',inverseSurface:'#E1E2E8',inverseOnSurface:'#2E3135',inversePrimary:'#33618D',scrim:'rgba(0,0,0,0.6)',disabledBg:'rgba(225,226,232,0.12)',disabledFg:'rgba(225,226,232,0.38)',ok:'#93D5A6',onOk:'#00391D',okContainer:'#15522F',onOkContainer:'#AFF2C1',warning:'#F4BF4F',onWarning:'#412D00',warningContainer:'#5F4400',onWarningContainer:'#FFDF9F'}};
+function links(d){var x=d?'Tamno':'';return {home:'Pocetna'+x+'.dc.html',tx:'Transakcije'+x+'.dc.html',txd:'Transakcija'+x+'.dc.html',rep:'Izvjestaji'+x+'.dc.html',bud:'Budzet'+x+'.dc.html',zp:'ZaProvjeru'+x+'.dc.html',set:'Podesavanja'+x+'.dc.html',an:'Analize'+x+'.dc.html',and:'Analiza'+x+'.dc.html',log:'SiroviLog'+x+'.dc.html'};}
+var R=[
+  ['30.09. 14:32','Google Wallet','ok','Maxi\nEUR 12,50'],
+  ['30.09. 08:15','Google Wallet','ok','Pekara Zlatni klas\nKM 25.00'],
+  ['29.09. 21:14','Moja banka','unk','Rezervacija sredstava 30,00 EUR\nHAC ENC LUCKO'],
+  ['29.09. 20:41','Google Wallet','ok','Wolt\nEUR 18,40'],
+  ['29.09. 18:03','Moja banka','ign','Vaš izvod za septembar je spreman.'],
+  ['29.09. 17:05','Moja banka','ok','Plaćanje karticom 45,00 EUR\nSHELL'],
+  ['28.09. 11:20','Moja banka','ok','Isplata na bankomatu 100,00 EUR']
+];
+class Component extends DCLogic {
+  renderVals() {
+    var dark = (this.props.theme ?? 'light') === 'dark';
+    var c = dark ? PAL.dark : PAL.light;
+    var S = {
+      ok: { status: 'Transakcija', icon: 'check_circle', bg: c.okContainer, fg: c.onOkContainer },
+      unk: { status: 'Neprepoznato', icon: 'help', bg: c.warningContainer, fg: c.onWarningContainer },
+      ign: { status: 'Nije plaćanje', icon: 'block', bg: c.surfaceContainerHighest, fg: c.onSurfaceVariant }
+    };
+    var rows = R.map(function (r) { return Object.assign({ time: r[0], app: r[1], text: r[3] }, S[r[2]]); });
+    return { c: c, L: links(dark), rows: rows };
+  }
+}
+</script>
+</body>
+</html>

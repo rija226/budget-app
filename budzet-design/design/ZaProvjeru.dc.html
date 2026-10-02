@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Za provjeru</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&amp;display=block">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 390px; height: {{h}}px; box-sizing: border-box; display: flex; flex-direction: column; background: {{c.surface}}; color: {{c.onSurface}}; font-family: Manrope, sans-serif; overflow: hidden">
+
+<header style="height: 64px; flex-shrink: 0; display: flex; align-items: center; gap: 4px; padding: 0 4px">
+<a href="{{L.home}}" aria-label="Nazad" style="width: 48px; height: 48px; border-radius: 24px; display: flex; align-items: center; justify-content: center; color: {{c.onSurface}}; text-decoration: none"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">arrow_back</span></a>
+<h1 style="margin: 0; flex-grow: 1; font-size: 22px; line-height: 28px; font-weight: 700">Za provjeru</h1>
+</header>
+
+<sc-if value="{{full}}" hint-placeholder-val="{{ true }}">
+<main style="flex-grow: 1; display: flex; flex-direction: column; gap: 24px; padding: 8px 16px 32px">
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">3 stavke čekaju tvoju odluku. Ništa se ne briše samo od sebe.</p>
+
+<section style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<h2 style="margin: 0; display: flex; align-items: center; gap: 8px; font-size: 16px; line-height: 24px; font-weight: 700"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 20px; line-height: 1; font-weight: 400; letter-spacing: 0; color: {{c.tertiary}}; font-variation-settings: 'FILL' 1">auto_awesome</span>Nepotvrđene AI kategorije (1)</h2>
+</div>
+<div style="background: {{c.surfaceContainerLow}}; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: flex-start; gap: 12px">
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 16px; line-height: 22px; font-weight: 600">Pekara Zlatni klas</span>
+<span style="font-size: 12px; line-height: 16px; color: {{c.onSurfaceVariant}}">Danas, 08:15 · Google Wallet</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-end; flex-shrink: 0">
+<span style="font-size: 16px; line-height: 22px; font-weight: 700; font-variant-numeric: tabular-nums">25,00 KM</span>
+<span style="font-size: 12px; line-height: 16px; color: {{c.onSurfaceVariant}}; font-variant-numeric: tabular-nums">≈ 12,78 €</span>
+</div>
+</div>
+<span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 4px; min-height: 28px; padding: 0 10px; border-radius: 8px; box-sizing: border-box; font-size: 13px; font-weight: 700; color: {{c.tertiary}}; border: 1px dashed {{c.tertiary}}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 16px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">auto_awesome</span>Restorani i kafići</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<button style="height: 40px; padding: 0 20px 0 16px; border-radius: 20px; border: none; background: {{c.tertiaryContainer}}; color: {{c.onTertiaryContainer}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0">check</span>Potvrdi</button>
+<a href="{{L.txd}}" style="height: 40px; padding: 0 16px; border-radius: 20px; color: {{c.primary}}; font-size: 14px; font-weight: 700; display: flex; align-items: center; text-decoration: none">Promijeni</a>
+</div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; display: flex; align-items: center; gap: 8px; font-size: 16px; line-height: 24px; font-weight: 700"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 20px; line-height: 1; font-weight: 400; letter-spacing: 0; color: {{c.onSurfaceVariant}}">help</span>Neprepoznate notifikacije (1)</h2>
+<div style="background: {{c.surfaceContainerLow}}; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 12px; line-height: 16px; font-weight: 700; color: {{c.onSurfaceVariant}}">Moja banka · 29.09. u 21:14</span>
+<pre style="margin: 0; padding: 12px; border-radius: 12px; background: {{c.surfaceContainerHighest}}; color: {{c.onSurface}}; font-family: ui-monospace, Menlo, monospace; font-size: 12px; line-height: 18px; white-space: pre-wrap">Rezervacija sredstava 30,00 EUR
+HAC ENC LUCKO</pre>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">Izgleda kao plaćanje, ali format nije poznat.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<button style="height: 40px; padding: 0 20px 0 16px; border-radius: 20px; border: none; background: {{c.secondaryContainer}}; color: {{c.onSecondaryContainer}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0">add</span>Dodaj kao transakciju</button>
+<button style="height: 40px; padding: 0 16px; border-radius: 20px; border: none; background: transparent; color: {{c.primary}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700">Zanemari</button>
+</div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; display: flex; align-items: center; gap: 8px; font-size: 16px; line-height: 24px; font-weight: 700"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 20px; line-height: 1; font-weight: 400; letter-spacing: 0; color: {{c.onSurfaceVariant}}">currency_exchange</span>Transakcije bez kursa (1)</h2>
+<div style="background: {{c.surfaceContainerLow}}; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: flex-start; gap: 12px">
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 16px; line-height: 22px; font-weight: 600">Steam</span>
+<span style="font-size: 12px; line-height: 16px; color: {{c.onSurfaceVariant}}">27.09. u 22:40 · Zabava</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-end; flex-shrink: 0">
+<span style="font-size: 16px; line-height: 22px; font-weight: 700; font-variant-numeric: tabular-nums">14,99 USD</span>
+<span style="font-size: 12px; line-height: 16px; color: {{c.onSurfaceVariant}}">bez kursa</span>
+</div>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">Nema kursa za USD, pa iznos još nije uračunat u budžet.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<button style="height: 40px; padding: 0 20px 0 16px; border-radius: 20px; border: none; background: {{c.secondaryContainer}}; color: {{c.onSecondaryContainer}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0">edit</span>Unesi kurs za USD</button>
+<button style="height: 40px; padding: 0 16px; border-radius: 20px; border: none; background: transparent; color: {{c.primary}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700">Unesi iznos u €</button>
+</div>
+</div>
+</section>
+</main>
+</sc-if>
+
+<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+<main style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 32px 32px 120px; text-align: center">
+<span style="width: 80px; height: 80px; border-radius: 40px; background: {{c.okContainer}}; color: {{c.onOkContainer}}; display: flex; align-items: center; justify-content: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 40px; line-height: 1; font-weight: 400; letter-spacing: 0">task_alt</span></span>
+<h2 style="margin: 8px 0 0; font-size: 22px; line-height: 28px; font-weight: 700">Sve je provjereno</h2>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">Kad neka notifikacija ili kategorija ne bude jasna, pojaviće se ovdje.</p>
+</main>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"variant":{"editor":"enum","options":["normal","empty"],"default":"normal"},"$preview":{"width":390,"height":1300}}'>
+var PAL={light:{primary:'#33618D',onPrimary:'#FFFFFF',primaryContainer:'#D1E4FF',onPrimaryContainer:'#0F4A73',secondary:'#535F70',onSecondary:'#FFFFFF',secondaryContainer:'#D7E3F7',onSecondaryContainer:'#3B4858',tertiary:'#6B5778',onTertiary:'#FFFFFF',tertiaryContainer:'#F2DAFF',onTertiaryContainer:'#523F5F',error:'#BA1A1A',onError:'#FFFFFF',errorContainer:'#FFDAD6',onErrorContainer:'#93000A',surface:'#F8F9FC',onSurface:'#191C20',surfaceVariant:'#DEE3EB',onSurfaceVariant:'#42474E',outline:'#72777F',outlineVariant:'#C2C7CF',surfaceContainerLowest:'#FFFFFF',surfaceContainerLow:'#F2F3F7',surfaceContainer:'#ECEEF1',surfaceContainerHigh:'#E6E8EB',surfaceContainerHighest:'#E1E2E6',inverseSurface:'#2E3135',inverseOnSurface:'#EFF0F4',inversePrimary:'#9ECAFC',scrim:'rgba(0,0,0,0.32)',disabledBg:'rgba(25,28,32,0.12)',disabledFg:'rgba(25,28,32,0.38)',ok:'#2E6A44',onOk:'#FFFFFF',okContainer:'#C8EECF',onOkContainer:'#0F5130',warning:'#845F00',onWarning:'#FFFFFF',warningContainer:'#FFDF9F',onWarningContainer:'#5F4400'},dark:{primary:'#9ECAFC',onPrimary:'#003256',primaryContainer:'#154A72',onPrimaryContainer:'#D1E4FF',secondary:'#BBC7DB',onSecondary:'#253140',secondaryContainer:'#3B4858',onSecondaryContainer:'#D7E3F7',tertiary:'#D7BEE4',onTertiary:'#3B2948',tertiaryContainer:'#523F5F',onTertiaryContainer:'#F2DAFF',error:'#FFB4AB',onError:'#690005',errorContainer:'#93000A',onErrorContainer:'#FFDAD6',surface:'#111418',onSurface:'#E1E2E8',surfaceVariant:'#42474E',onSurfaceVariant:'#C2C7CF',outline:'#8C9199',outlineVariant:'#42474E',surfaceContainerLowest:'#0C0E12',surfaceContainerLow:'#191C20',surfaceContainer:'#1D2024',surfaceContainerHigh:'#282A2F',surfaceContainerHighest:'#33353A',inverseSurface:'#E1E2E8',inverseOnSurface:'#2E3135',inversePrimary:'#33618D',scrim:'rgba(0,0,0,0.6)',disabledBg:'rgba(225,226,232,0.12)',disabledFg:'rgba(225,226,232,0.38)',ok:'#93D5A6',onOk:'#00391D',okContainer:'#15522F',onOkContainer:'#AFF2C1',warning:'#F4BF4F',onWarning:'#412D00',warningContainer:'#5F4400',onWarningContainer:'#FFDF9F'}};
+function links(d){var x=d?'Tamno':'';return {home:'Pocetna'+x+'.dc.html',tx:'Transakcije'+x+'.dc.html',txd:'Transakcija'+x+'.dc.html',rep:'Izvjestaji'+x+'.dc.html',bud:'Budzet'+x+'.dc.html',zp:'ZaProvjeru'+x+'.dc.html',set:'Podesavanja'+x+'.dc.html',an:'Analize'+x+'.dc.html',and:'Analiza'+x+'.dc.html',log:'SiroviLog'+x+'.dc.html'};}
+class Component extends DCLogic {
+  renderVals() {
+    var dark = (this.props.theme ?? 'light') === 'dark';
+    var empty = (this.props.variant ?? 'normal') === 'empty';
+    return { c: dark ? PAL.dark : PAL.light, L: links(dark), h: empty ? 844 : 1300, full: !empty, empty: empty };
+  }
+}
+</script>
+</body>
+</html>

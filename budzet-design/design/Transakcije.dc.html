@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Transakcije</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&amp;display=block">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 390px; height: {{h}}px; box-sizing: border-box; position: relative; display: flex; flex-direction: column; background: {{c.surface}}; color: {{c.onSurface}}; font-family: Manrope, sans-serif; overflow: hidden">
+
+<header style="height: 64px; flex-shrink: 0; display: flex; align-items: center; gap: 4px; padding: 0 4px 0 16px">
+<h1 style="margin: 0; flex-grow: 1; font-size: 22px; line-height: 28px; font-weight: 700">Transakcije</h1>
+<button aria-label="Pretraga" style="width: 48px; height: 48px; border: none; border-radius: 24px; background: transparent; color: {{c.onSurfaceVariant}}; display: flex; align-items: center; justify-content: center; padding: 0"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">search</span></button>
+</header>
+
+<div style="display: flex; gap: 8px; padding: 4px 16px 12px; overflow: hidden; flex-shrink: 0">
+<button style="flex-shrink: 0; height: 32px; padding: 0 8px 0 12px; border-radius: 8px; border: none; background: {{c.secondaryContainer}}; color: {{c.onSecondaryContainer}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 4px">25.09.–24.10.<span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0">arrow_drop_down</span></button>
+<button style="flex-shrink: 0; height: 32px; padding: 0 8px 0 12px; border-radius: 8px; border: 1px solid {{c.outlineVariant}}; background: transparent; color: {{c.onSurfaceVariant}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 4px">Kategorija<span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0">arrow_drop_down</span></button>
+<button style="flex-shrink: 0; height: 32px; padding: 0 12px; border-radius: 8px; border: 1px solid {{c.outlineVariant}}; background: transparent; color: {{c.onSurfaceVariant}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 4px"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0">auto_awesome</span>AI nepotvrđeno</button>
+</div>
+
+<main style="flex-grow: 1; display: flex; flex-direction: column; padding: 0 0 24px">
+<sc-if value="{{hasTx}}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="4">
+<section style="display: flex; flex-direction: column">
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 16px 16px 8px">
+<h2 style="margin: 0; font-size: 14px; line-height: 20px; font-weight: 800; color: {{c.primary}}">{{g.label}}</h2>
+<span style="font-size: 12px; line-height: 16px; font-weight: 600; color: {{c.onSurfaceVariant}}; font-variant-numeric: tabular-nums; white-space: nowrap">{{g.total}}</span>
+</div>
+<sc-for list="{{g.items}}" as="t" hint-placeholder-count="2">
+<a href="{{L.txd}}" style="display: flex; align-items: center; gap: 16px; padding: 12px 16px; min-height: 72px; box-sizing: border-box; text-decoration: none; color: {{c.onSurface}}">
+<span style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 20px; background: {{t.avBg}}; color: {{t.avFg}}; display: flex; align-items: center; justify-content: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 20px; line-height: 1; font-weight: 400; letter-spacing: 0">{{t.icon}}</span></span>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 16px; line-height: 22px; font-weight: 600">{{t.m}}</span>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px">
+<span style="display: inline-flex; align-items: center; gap: 4px; min-height: 24px; padding: 0 8px; border-radius: 8px; box-sizing: border-box; font-size: 12px; line-height: 16px; font-weight: 700; background: {{t.chipBg}}; color: {{t.chipFg}}; border: {{t.chipBorder}}"><sc-if value="{{t.hasChipIcon}}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 14px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">{{t.chipIcon}}</span></sc-if><span>{{t.cat}}</span></span>
+<span style="font-size: 12px; line-height: 16px; color: {{c.onSurfaceVariant}}">{{t.time}}</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-end; flex-shrink: 0; gap: 2px">
+<span style="font-size: 16px; line-height: 22px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; color: {{t.amtColor}}">{{t.amount}}</span>
+<sc-if value="{{t.hasSub}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12px; line-height: 16px; color: {{c.onSurfaceVariant}}; font-variant-numeric: tabular-nums; white-space: nowrap">{{t.sub}}</span></sc-if>
+</div>
+</a>
+</sc-for>
+</section>
+</sc-for>
+</sc-if>
+
+<sc-if value="{{noTx}}" hint-placeholder-val="{{ false }}">
+<div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 32px; text-align: center">
+<span style="width: 80px; height: 80px; border-radius: 40px; background: {{c.surfaceContainerHigh}}; color: {{c.onSurfaceVariant}}; display: flex; align-items: center; justify-content: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 40px; line-height: 1; font-weight: 400; letter-spacing: 0">receipt_long</span></span>
+<h2 style="margin: 8px 0 0; font-size: 22px; line-height: 28px; font-weight: 700">Još nema transakcija u ovom periodu</h2>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">Plaćanja karticom se bilježe sama čim stigne notifikacija banke ili Walleta. Gotovinu i ostalo možeš dodati ručno.</p>
+</div>
+</sc-if>
+</main>
+
+<button aria-label="Dodaj transakciju ručno" style="position: absolute; right: 16px; bottom: 96px; width: 56px; height: 56px; border-radius: 16px; border: none; padding: 0; background: {{c.primaryContainer}}; color: {{c.onPrimaryContainer}}; box-shadow: 0 3px 6px rgba(0,0,0,0.18), 0 1px 3px rgba(0,0,0,0.12); display: flex; align-items: center; justify-content: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">add</span></button>
+
+<nav aria-label="Glavna navigacija" style="height: 80px; flex-shrink: 0; box-sizing: border-box; padding: 12px 0 16px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: {{c.surfaceContainer}}">
+<a href="{{L.home}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: {{c.onSurfaceVariant}}"><span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">home</span></span><span style="font-size: 12px; line-height: 16px; font-weight: 600; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">Početna</span></a>
+<a href="{{L.tx}}" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: {{c.onSurface}}"><span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center; background: {{c.secondaryContainer}}; color: {{c.onSecondaryContainer}}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">receipt_long</span></span><span style="font-size: 12px; line-height: 16px; font-weight: 800; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">Transakcije</span></a>
+<a href="{{L.rep}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: {{c.onSurfaceVariant}}"><span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">bar_chart</span></span><span style="font-size: 12px; line-height: 16px; font-weight: 600; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">Izvještaji</span></a>
+<a href="{{L.bud}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: {{c.onSurfaceVariant}}"><span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">account_balance_wallet</span></span><span style="font-size: 12px; line-height: 16px; font-weight: 600; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">Budžet</span></a>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"variant":{"editor":"enum","options":["normal","empty"],"default":"normal"},"$preview":{"width":390,"height":1080}}'>
+var PAL={light:{primary:'#33618D',onPrimary:'#FFFFFF',primaryContainer:'#D1E4FF',onPrimaryContainer:'#0F4A73',secondary:'#535F70',onSecondary:'#FFFFFF',secondaryContainer:'#D7E3F7',onSecondaryContainer:'#3B4858',tertiary:'#6B5778',onTertiary:'#FFFFFF',tertiaryContainer:'#F2DAFF',onTertiaryContainer:'#523F5F',error:'#BA1A1A',onError:'#FFFFFF',errorContainer:'#FFDAD6',onErrorContainer:'#93000A',surface:'#F8F9FC',onSurface:'#191C20',surfaceVariant:'#DEE3EB',onSurfaceVariant:'#42474E',outline:'#72777F',outlineVariant:'#C2C7CF',surfaceContainerLowest:'#FFFFFF',surfaceContainerLow:'#F2F3F7',surfaceContainer:'#ECEEF1',surfaceContainerHigh:'#E6E8EB',surfaceContainerHighest:'#E1E2E6',inverseSurface:'#2E3135',inverseOnSurface:'#EFF0F4',inversePrimary:'#9ECAFC',scrim:'rgba(0,0,0,0.32)',disabledBg:'rgba(25,28,32,0.12)',disabledFg:'rgba(25,28,32,0.38)',ok:'#2E6A44',onOk:'#FFFFFF',okContainer:'#C8EECF',onOkContainer:'#0F5130',warning:'#845F00',onWarning:'#FFFFFF',warningContainer:'#FFDF9F',onWarningContainer:'#5F4400'},dark:{primary:'#9ECAFC',onPrimary:'#003256',primaryContainer:'#154A72',onPrimaryContainer:'#D1E4FF',secondary:'#BBC7DB',onSecondary:'#253140',secondaryContainer:'#3B4858',onSecondaryContainer:'#D7E3F7',tertiary:'#D7BEE4',onTertiary:'#3B2948',tertiaryContainer:'#523F5F',onTertiaryContainer:'#F2DAFF',error:'#FFB4AB',onError:'#690005',errorContainer:'#93000A',onErrorContainer:'#FFDAD6',surface:'#111418',onSurface:'#E1E2E8',surfaceVariant:'#42474E',onSurfaceVariant:'#C2C7CF',outline:'#8C9199',outlineVariant:'#42474E',surfaceContainerLowest:'#0C0E12',surfaceContainerLow:'#191C20',surfaceContainer:'#1D2024',surfaceContainerHigh:'#282A2F',surfaceContainerHighest:'#33353A',inverseSurface:'#E1E2E8',inverseOnSurface:'#2E3135',inversePrimary:'#33618D',scrim:'rgba(0,0,0,0.6)',disabledBg:'rgba(225,226,232,0.12)',disabledFg:'rgba(225,226,232,0.38)',ok:'#93D5A6',onOk:'#00391D',okContainer:'#15522F',onOkContainer:'#AFF2C1',warning:'#F4BF4F',onWarning:'#412D00',warningContainer:'#5F4400',onWarningContainer:'#FFDF9F'}};
+function eur(n){var s=Math.abs(n).toFixed(2).split('.');s[0]=s[0].replace(/\B(?=(\d{3})+(?!\d))/g,'.');return s[0]+','+s[1]+' €';}
+function links(d){var x=d?'Tamno':'';return {home:'Pocetna'+x+'.dc.html',tx:'Transakcije'+x+'.dc.html',txd:'Transakcija'+x+'.dc.html',rep:'Izvjestaji'+x+'.dc.html',bud:'Budzet'+x+'.dc.html',zp:'ZaProvjeru'+x+'.dc.html',set:'Podesavanja'+x+'.dc.html',an:'Analize'+x+'.dc.html',and:'Analiza'+x+'.dc.html',log:'SiroviLog'+x+'.dc.html'};}
+var G=[
+  {label:'Danas', total:'25,28 €', items:[
+    {m:'Maxi',cat:'Market',icon:'shopping_cart',time:'14:32',amt:12.50},
+    {m:'Pekara Zlatni klas',cat:'Restorani i kafići',icon:'restaurant',time:'08:15',foreign:'25,00 KM',amt:12.78,kind:'ai'}]},
+  {label:'Juče', total:'63,40 €', items:[
+    {m:'Wolt',cat:'Dostava',icon:'delivery_dining',time:'20:41',amt:18.40},
+    {m:'Shell',cat:'Gorivo i prevoz',icon:'local_gas_station',time:'17:05',amt:45.00}]},
+  {label:'28.09.', total:'112,99 €', items:[
+    {m:'Bankomat',cat:'Gotovina',icon:'payments',time:'11:20',amt:100.00},
+    {m:'Netflix',cat:'Pretplate',icon:'subscriptions',time:'06:00',amt:12.99}]},
+  {label:'25.09.', total:'Početak perioda', items:[
+    {m:'Uplata plate',cat:'Plata',icon:'work',time:'09:02',amt:1500,kind:'salary'},
+    {m:'Prenos na štednju',cat:'Prenos',icon:'sync_alt',time:'09:40',amt:300,kind:'transfer'}]}
+];
+class Component extends DCLogic {
+  renderVals() {
+    var dark = (this.props.theme ?? 'light') === 'dark';
+    var v = this.props.variant ?? 'normal';
+    var c = dark ? PAL.dark : PAL.light;
+    var groups = G.map(function (g) {
+      return { label: g.label, total: g.total, items: g.items.map(function (t) {
+        var ai = t.kind === 'ai', sal = t.kind === 'salary', tr = t.kind === 'transfer';
+        return {
+          m: t.m, cat: t.cat, icon: t.icon, time: t.time,
+          avBg: sal ? c.okContainer : c.secondaryContainer, avFg: sal ? c.onOkContainer : c.onSecondaryContainer,
+          amount: t.foreign ? t.foreign : ((sal ? '+' : '') + eur(t.amt)),
+          amtColor: sal ? c.ok : (tr ? c.onSurfaceVariant : c.onSurface),
+          hasSub: !!t.foreign || tr, sub: t.foreign ? ('≈ ' + eur(t.amt)) : (tr ? 'van budžeta' : ''),
+          hasChipIcon: ai || sal || tr, chipIcon: ai ? 'auto_awesome' : (sal ? 'work' : 'sync_alt'),
+          chipBg: ai ? 'transparent' : (sal ? c.okContainer : c.surfaceContainerHighest),
+          chipFg: ai ? c.tertiary : (sal ? c.onOkContainer : c.onSurfaceVariant),
+          chipBorder: ai ? ('1px dashed ' + c.tertiary) : '1px solid transparent'
+        };
+      }) };
+    });
+    return { c: c, L: links(dark), h: v === 'empty' ? 844 : 1080, groups: groups, hasTx: v !== 'empty', noTx: v === 'empty' };
+  }
+}
+</script>
+</body>
+</html>

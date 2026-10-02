@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Podešavanja</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&amp;display=block">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 390px; height: 1750px; box-sizing: border-box; display: flex; flex-direction: column; background: {{c.surface}}; color: {{c.onSurface}}; font-family: Manrope, sans-serif; overflow: hidden">
+
+<header style="height: 64px; flex-shrink: 0; display: flex; align-items: center; gap: 4px; padding: 0 4px">
+<a href="{{L.home}}" aria-label="Nazad" style="width: 48px; height: 48px; border-radius: 24px; display: flex; align-items: center; justify-content: center; color: {{c.onSurface}}; text-decoration: none"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">arrow_back</span></a>
+<h1 style="margin: 0; flex-grow: 1; font-size: 22px; line-height: 28px; font-weight: 700">Podešavanja</h1>
+</header>
+
+<main style="flex-grow: 1; display: flex; flex-direction: column; gap: 8px; padding: 0 0 32px">
+<sc-for list="{{sections}}" as="s" hint-placeholder-count="6">
+<section style="display: flex; flex-direction: column; padding-bottom: 8px">
+<h2 style="margin: 0; padding: 16px 16px 8px; font-size: 14px; line-height: 20px; font-weight: 800; color: {{c.primary}}">{{s.title}}</h2>
+<sc-for list="{{s.rows}}" as="r" hint-placeholder-count="3">
+<div style="display: flex; align-items: center; gap: 16px; padding: 12px 16px; min-height: 64px; box-sizing: border-box">
+<span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0; color: {{c.onSurfaceVariant}}; flex-shrink: 0">{{r.icon}}</span>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<sc-if value="{{r.isLink}}" hint-placeholder-val="{{ false }}"><a href="{{r.href}}" style="font-size: 16px; line-height: 24px; font-weight: 600; color: {{c.onSurface}}; text-decoration: none">{{r.title}}</a></sc-if>
+<sc-if value="{{r.noLink}}" hint-placeholder-val="{{ true }}"><span style="font-size: 16px; line-height: 24px; font-weight: 600">{{r.title}}</span></sc-if>
+<span style="display: flex; align-items: flex-start; gap: 4px; font-size: 14px; line-height: 20px; color: {{r.subColor}}"><sc-if value="{{r.hasSubIcon}}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 16px; line-height: 20px; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">{{r.subIcon}}</span></sc-if><span>{{r.sub}}</span></span>
+</div>
+<sc-if value="{{r.chevron}}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0; color: {{c.onSurfaceVariant}}; flex-shrink: 0">chevron_right</span></sc-if>
+<sc-if value="{{r.hasBtn}}" hint-placeholder-val="{{ false }}"><button style="flex-shrink: 0; height: 40px; padding: 0 16px; border-radius: 20px; border: none; background: {{c.secondaryContainer}}; color: {{c.onSecondaryContainer}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700">{{r.btn}}</button></sc-if>
+</div>
+</sc-for>
+</section>
+</sc-for>
+
+<section style="display: flex; flex-direction: column; gap: 12px; padding: 8px 16px 0">
+<h2 style="margin: 0; padding-top: 8px; font-size: 14px; line-height: 20px; font-weight: 800; color: {{c.primary}}">Ponovna obrada</h2>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">Ponovo čita sve sačuvane notifikacije po trenutnim pravilima. Ručne izmjene i potvrđene kategorije ostaju.</p>
+<button style="align-self: flex-start; height: 40px; padding: 0 24px 0 16px; border-radius: 20px; border: 1px solid {{c.outline}}; background: transparent; color: {{c.primary}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0">refresh</span>Obradi ponovo sve</button>
+</section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":1750}}'>
+var PAL={light:{primary:'#33618D',onPrimary:'#FFFFFF',primaryContainer:'#D1E4FF',onPrimaryContainer:'#0F4A73',secondary:'#535F70',onSecondary:'#FFFFFF',secondaryContainer:'#D7E3F7',onSecondaryContainer:'#3B4858',tertiary:'#6B5778',onTertiary:'#FFFFFF',tertiaryContainer:'#F2DAFF',onTertiaryContainer:'#523F5F',error:'#BA1A1A',onError:'#FFFFFF',errorContainer:'#FFDAD6',onErrorContainer:'#93000A',surface:'#F8F9FC',onSurface:'#191C20',surfaceVariant:'#DEE3EB',onSurfaceVariant:'#42474E',outline:'#72777F',outlineVariant:'#C2C7CF',surfaceContainerLowest:'#FFFFFF',surfaceContainerLow:'#F2F3F7',surfaceContainer:'#ECEEF1',surfaceContainerHigh:'#E6E8EB',surfaceContainerHighest:'#E1E2E6',inverseSurface:'#2E3135',inverseOnSurface:'#EFF0F4',inversePrimary:'#9ECAFC',scrim:'rgba(0,0,0,0.32)',disabledBg:'rgba(25,28,32,0.12)',disabledFg:'rgba(25,28,32,0.38)',ok:'#2E6A44',onOk:'#FFFFFF',okContainer:'#C8EECF',onOkContainer:'#0F5130',warning:'#845F00',onWarning:'#FFFFFF',warningContainer:'#FFDF9F',onWarningContainer:'#5F4400'},dark:{primary:'#9ECAFC',onPrimary:'#003256',primaryContainer:'#154A72',onPrimaryContainer:'#D1E4FF',secondary:'#BBC7DB',onSecondary:'#253140',secondaryContainer:'#3B4858',onSecondaryContainer:'#D7E3F7',tertiary:'#D7BEE4',onTertiary:'#3B2948',tertiaryContainer:'#523F5F',onTertiaryContainer:'#F2DAFF',error:'#FFB4AB',onError:'#690005',errorContainer:'#93000A',onErrorContainer:'#FFDAD6',surface:'#111418',onSurface:'#E1E2E8',surfaceVariant:'#42474E',onSurfaceVariant:'#C2C7CF',outline:'#8C9199',outlineVariant:'#42474E',surfaceContainerLowest:'#0C0E12',surfaceContainerLow:'#191C20',surfaceContainer:'#1D2024',surfaceContainerHigh:'#282A2F',surfaceContainerHighest:'#33353A',inverseSurface:'#E1E2E8',inverseOnSurface:'#2E3135',inversePrimary:'#33618D',scrim:'rgba(0,0,0,0.6)',disabledBg:'rgba(225,226,232,0.12)',disabledFg:'rgba(225,226,232,0.38)',ok:'#93D5A6',onOk:'#00391D',okContainer:'#15522F',onOkContainer:'#AFF2C1',warning:'#F4BF4F',onWarning:'#412D00',warningContainer:'#5F4400',onWarningContainer:'#FFDF9F'}};
+function links(d){var x=d?'Tamno':'';return {home:'Pocetna'+x+'.dc.html',tx:'Transakcije'+x+'.dc.html',txd:'Transakcija'+x+'.dc.html',rep:'Izvjestaji'+x+'.dc.html',bud:'Budzet'+x+'.dc.html',zp:'ZaProvjeru'+x+'.dc.html',set:'Podesavanja'+x+'.dc.html',an:'Analize'+x+'.dc.html',and:'Analiza'+x+'.dc.html',log:'SiroviLog'+x+'.dc.html'};}
+class Component extends DCLogic {
+  renderVals() {
+    var dark = (this.props.theme ?? 'light') === 'dark';
+    var c = dark ? PAL.dark : PAL.light;
+    function row(icon, title, sub, kind, extra) {
+      var col = kind === 'ok' ? c.ok : (kind === 'warn' ? c.warning : (kind === 'err' ? c.error : c.onSurfaceVariant));
+      var si = kind === 'ok' ? 'check_circle' : (kind === 'warn' ? 'warning' : (kind === 'err' ? 'error' : ''));
+      extra = extra || {};
+      return { icon: icon, title: title, sub: sub, subColor: col, hasSubIcon: !!si, subIcon: si, chevron: !extra.btn, hasBtn: !!extra.btn, btn: extra.btn || '', isLink: !!extra.href, noLink: !extra.href, href: extra.href || '' };
+    }
+    var sections = [
+      { title: 'Dozvole', rows: [
+        row('notifications', 'Pristup notifikacijama', 'Uključeno', 'ok'),
+        row('notifications_active', 'Slanje notifikacija', 'Uključeno', 'ok'),
+        row('battery_alert', 'Optimizacija baterije', 'Uključena · Android može zaustaviti praćenje', 'warn', { btn: 'Isključi' })
+      ] },
+      { title: 'AI analiza', rows: [
+        row('key', 'API ključ', 'sk-ant-…4f2a · provjeren 25.09.', 'ok'),
+        row('schedule', 'Kada se piše analiza', 'Dan poslije plate, u 07:00', '')
+      ] },
+      { title: 'Pravilo za platu', rows: [
+        row('account_balance', 'Izvor plate', 'Moja banka · uplata na tekući račun', ''),
+        row('payments', 'Minimalni iznos', '1.000,00 € · manje uplate ne počinju novi period', '')
+      ] },
+      { title: 'Kursevi valuta', rows: [
+        row('euro', 'Osnovna valuta', 'EUR', ''),
+        row('currency_exchange', 'KM (BAM)', '1 € = 1,95583 KM · fiksni kurs', ''),
+        row('currency_exchange', 'USD', 'Kurs nije unesen · 1 transakcija čeka', 'warn'),
+        row('add', 'Dodaj valutu', 'Kurs unosiš ručno', '')
+      ] },
+      { title: 'Podaci', rows: [
+        row('data_object', 'Sirovi log notifikacija', '248 zapisa · posljednji danas u 14:32', '', { href: links(dark).log })
+      ] },
+      { title: 'Izgled', rows: [
+        row('contrast', 'Tema', 'Prati sistem', '')
+      ] }
+    ];
+    return { c: c, L: links(dark), sections: sections };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Uvod i dozvole</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&amp;display=block">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 390px; height: {{h}}px; box-sizing: border-box; display: flex; flex-direction: column; background: {{c.surface}}; color: {{c.onSurface}}; font-family: Manrope, sans-serif; overflow: hidden">
+
+<main style="flex-grow: 1; display: flex; flex-direction: column; gap: 16px; padding: 40px 16px 24px">
+
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 0 8px">
+<span style="width: 56px; height: 56px; border-radius: 16px; background: {{c.primaryContainer}}; color: {{c.onPrimaryContainer}}; display: flex; align-items: center; justify-content: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 28px; line-height: 1; font-weight: 400; letter-spacing: 0">account_balance_wallet</span></span>
+<h1 style="margin: 8px 0 0; font-size: 28px; line-height: 36px; font-weight: 700">Podesimo praćenje</h1>
+<p style="margin: 0; font-size: 16px; line-height: 24px; color: {{c.onSurfaceVariant}}">Budžet čita notifikacije banke i Google Walleta na ovom telefonu i sam bilježi plaćanja karticom. Podaci ostaju na telefonu.</p>
+<p style="margin: 4px 0 0; font-size: 14px; line-height: 20px; font-weight: 700; color: {{c.primary}}">{{progress}}</p>
+</div>
+
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="3">
+<section style="background: {{s.bg}}; border: {{s.border}}; border-radius: 16px; padding: 16px; display: flex; gap: 16px; align-items: flex-start">
+<span style="width: 40px; height: 40px; flex-shrink: 0; box-sizing: border-box; border-radius: 20px; border: {{s.dotBorder}}; background: {{s.dotBg}}; color: {{s.dotFg}}; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800"><sc-if value="{{s.hasIcon}}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 22px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">{{s.icon}}</span></sc-if><sc-if value="{{s.noIcon}}" hint-placeholder-val="{{ true }}"><span>{{s.n}}</span></sc-if></span>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<h2 style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 700">{{s.title}}</h2>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">{{s.desc}}</p>
+<span style="display: flex; align-items: center; gap: 4px; margin-top: 4px; font-size: 14px; line-height: 20px; font-weight: 700; color: {{s.stColor}}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">{{s.stIcon}}</span>{{s.status}}</span>
+<sc-if value="{{s.hasAction}}" hint-placeholder-val="{{ true }}">
+<button style="align-self: flex-start; margin-top: 8px; min-height: 40px; padding: 0 20px; border-radius: 20px; border: none; background: {{s.btnBg}}; color: {{s.btnFg}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700; text-align: left">{{s.action}}</button>
+</sc-if>
+</div>
+</section>
+</sc-for>
+
+<section id="pomoc" style="border: 1px solid {{c.outlineVariant}}; border-radius: 16px; display: flex; flex-direction: column">
+<button aria-expanded="{{helpOpenStr}}" style="min-height: 56px; padding: 12px 16px; border: none; background: transparent; color: {{c.onSurface}}; font-family: Manrope, sans-serif; display: flex; align-items: center; gap: 12px; text-align: left">
+<span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0; color: {{c.onSurfaceVariant}}">help</span>
+<span style="flex-grow: 1; font-size: 16px; line-height: 22px; font-weight: 700">Ako je pristup notifikacijama blokiran</span>
+<span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0; color: {{c.onSurfaceVariant}}">{{helpIcon}}</span>
+</button>
+<sc-if value="{{helpOpen}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 16px; padding: 0 16px 16px">
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">Android ovo radi za aplikacije instalirane van Play prodavnice. Odblokiraš jednom, u četiri koraka:</p>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px">
+<li style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 24px; height: 24px; flex-shrink: 0; border-radius: 12px; background: {{c.secondaryContainer}}; color: {{c.onSecondaryContainer}}; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center">1</span><div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 14px; line-height: 22px">Otvori <strong>Info o aplikaciji</strong> za Budžet.</span><button style="align-self: flex-start; height: 40px; padding: 0 16px 0 12px; border-radius: 20px; border: 1px solid {{c.outline}}; background: transparent; color: {{c.primary}}; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0">open_in_new</span>Otvori Info o aplikaciji</button></div></li>
+<li style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 24px; height: 24px; flex-shrink: 0; border-radius: 12px; background: {{c.secondaryContainer}}; color: {{c.onSecondaryContainer}}; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center">2</span><span style="font-size: 14px; line-height: 22px">Dodirni <strong>⋮</strong> u gornjem desnom uglu.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 24px; height: 24px; flex-shrink: 0; border-radius: 12px; background: {{c.secondaryContainer}}; color: {{c.onSecondaryContainer}}; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center">3</span><span style="font-size: 14px; line-height: 22px">Izaberi <strong>Dozvoli ograničena podešavanja</strong> i potvrdi otiskom ili PIN-om.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 24px; height: 24px; flex-shrink: 0; border-radius: 12px; background: {{c.secondaryContainer}}; color: {{c.onSecondaryContainer}}; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center">4</span><span style="font-size: 14px; line-height: 22px">Vrati se ovdje i ponovo dodirni <strong>Uključi pristup</strong>.</span></li>
+</ol>
+</div>
+</sc-if>
+</section>
+</main>
+
+<footer style="flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; padding: 16px 16px 24px; border-top: 1px solid {{c.outlineVariant}}">
+<a href="{{cta.href}}" aria-disabled="{{cta.disabledStr}}" style="height: 56px; border-radius: 28px; background: {{cta.bg}}; color: {{cta.fg}}; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; text-decoration: none">{{cta.label}}</a>
+<p style="margin: 0; text-align: center; font-size: 12px; line-height: 16px; color: {{c.onSurfaceVariant}}">{{cta.note}}</p>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"variant":{"editor":"enum","options":["start","blocked","done"],"default":"start"},"$preview":{"width":390,"height":1040}}'>
+var PAL={light:{primary:'#33618D',onPrimary:'#FFFFFF',primaryContainer:'#D1E4FF',onPrimaryContainer:'#0F4A73',secondary:'#535F70',onSecondary:'#FFFFFF',secondaryContainer:'#D7E3F7',onSecondaryContainer:'#3B4858',tertiary:'#6B5778',onTertiary:'#FFFFFF',tertiaryContainer:'#F2DAFF',onTertiaryContainer:'#523F5F',error:'#BA1A1A',onError:'#FFFFFF',errorContainer:'#FFDAD6',onErrorContainer:'#93000A',surface:'#F8F9FC',onSurface:'#191C20',surfaceVariant:'#DEE3EB',onSurfaceVariant:'#42474E',outline:'#72777F',outlineVariant:'#C2C7CF',surfaceContainerLowest:'#FFFFFF',surfaceContainerLow:'#F2F3F7',surfaceContainer:'#ECEEF1',surfaceContainerHigh:'#E6E8EB',surfaceContainerHighest:'#E1E2E6',inverseSurface:'#2E3135',inverseOnSurface:'#EFF0F4',inversePrimary:'#9ECAFC',scrim:'rgba(0,0,0,0.32)',disabledBg:'rgba(25,28,32,0.12)',disabledFg:'rgba(25,28,32,0.38)',ok:'#2E6A44',onOk:'#FFFFFF',okContainer:'#C8EECF',onOkContainer:'#0F5130',warning:'#845F00',onWarning:'#FFFFFF',warningContainer:'#FFDF9F',onWarningContainer:'#5F4400'},dark:{primary:'#9ECAFC',onPrimary:'#003256',primaryContainer:'#154A72',onPrimaryContainer:'#D1E4FF',secondary:'#BBC7DB',onSecondary:'#253140',secondaryContainer:'#3B4858',onSecondaryContainer:'#D7E3F7',tertiary:'#D7BEE4',onTertiary:'#3B2948',tertiaryContainer:'#523F5F',onTertiaryContainer:'#F2DAFF',error:'#FFB4AB',onError:'#690005',errorContainer:'#93000A',onErrorContainer:'#FFDAD6',surface:'#111418',onSurface:'#E1E2E8',surfaceVariant:'#42474E',onSurfaceVariant:'#C2C7CF',outline:'#8C9199',outlineVariant:'#42474E',surfaceContainerLowest:'#0C0E12',surfaceContainerLow:'#191C20',surfaceContainer:'#1D2024',surfaceContainerHigh:'#282A2F',surfaceContainerHighest:'#33353A',inverseSurface:'#E1E2E8',inverseOnSurface:'#2E3135',inversePrimary:'#33618D',scrim:'rgba(0,0,0,0.6)',disabledBg:'rgba(225,226,232,0.12)',disabledFg:'rgba(225,226,232,0.38)',ok:'#93D5A6',onOk:'#00391D',okContainer:'#15522F',onOkContainer:'#AFF2C1',warning:'#F4BF4F',onWarning:'#412D00',warningContainer:'#5F4400',onWarningContainer:'#FFDF9F'}};
+var STEPS=[
+  {n:'1',title:'Pristup notifikacijama',desc:'Obavezno. Bez ovoga se plaćanja ne bilježe sama.',action:'Uključi pristup'},
+  {n:'2',title:'Slanje notifikacija',desc:'Za upozorenja o limitu i obavještenje kad je analiza spremna.',action:'Dozvoli'},
+  {n:'3',title:'Isključi optimizaciju baterije',desc:'Da Android ne bi zaustavio praćenje dok je telefon u džepu.',action:'Otvori podešavanja baterije'}
+];
+class Component extends DCLogic {
+  renderVals() {
+    var dark = (this.props.theme ?? 'light') === 'dark';
+    var v = this.props.variant ?? 'start';
+    var c = dark ? PAL.dark : PAL.light;
+    var state = v === 'done' ? ['done','done','done'] : (v === 'blocked' ? ['blocked','done','todo'] : ['todo','todo','todo']);
+    var steps = STEPS.map(function (s, i) {
+      var st = state[i];
+      var base = { n: s.n, title: s.title, desc: s.desc, bg: c.surfaceContainerLow, border: '1px solid transparent' };
+      if (st === 'done') return Object.assign(base, { hasIcon: true, noIcon: false, icon: 'check', dotBorder: 'none', dotBg: c.okContainer, dotFg: c.onOkContainer, stIcon: 'check_circle', status: 'Uključeno', stColor: c.ok, hasAction: false, action: '', btnBg: '', btnFg: '' });
+      if (st === 'blocked') return Object.assign(base, { border: '1px solid ' + c.error, hasIcon: true, noIcon: false, icon: 'block', dotBorder: 'none', dotBg: c.errorContainer, dotFg: c.onErrorContainer, stIcon: 'error', status: 'Android je blokirao ovu dozvolu', stColor: c.error, hasAction: true, action: 'Pogledaj kako se odblokira', btnBg: c.secondaryContainer, btnFg: c.onSecondaryContainer });
+      return Object.assign(base, { hasIcon: false, noIcon: true, icon: '', dotBorder: '2px solid ' + c.outline, dotBg: 'transparent', dotFg: c.onSurfaceVariant, stIcon: 'radio_button_unchecked', status: 'Nije urađeno', stColor: c.onSurfaceVariant, hasAction: true, action: s.action, btnBg: i === 0 ? c.primary : c.secondaryContainer, btnFg: i === 0 ? c.onPrimary : c.onSecondaryContainer });
+    });
+    var done = state.filter(function (x) { return x === 'done'; }).length;
+    var ready = state[0] === 'done';
+    var cta = ready
+      ? { label: 'Počni', bg: c.primary, fg: c.onPrimary, disabledStr: 'false', href: dark ? 'PocetnaPraznoTamno.dc.html' : 'PocetnaPrazno.dc.html', note: done === 3 ? 'Sve je spremno. Prva plata započinje prvi period.' : 'Ostale korake možeš završiti kasnije u Podešavanjima.' }
+      : { label: 'Nastavi', bg: c.disabledBg, fg: c.disabledFg, disabledStr: 'true', href: '#pomoc', note: 'Za nastavak je potreban prvi korak.' };
+    var helpOpen = v === 'blocked';
+    return {
+      c: c, h: ({start: 1040, blocked: 1420, done: 1040})[v] || 1040,
+      progress: done + ' od 3 koraka završeno', steps: steps,
+      helpOpen: helpOpen, helpOpenStr: helpOpen ? 'true' : 'false', helpIcon: helpOpen ? 'expand_less' : 'expand_more', cta: cta
+    };
+  }
+}
+</script>
+</body>
+</html>

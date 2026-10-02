@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Sistemske notifikacije</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&amp;display=block">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 1200px; height: 820px; box-sizing: border-box; padding: 48px; background: #ECEEF1; color: #191C20; font-family: Manrope, sans-serif; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px">
+
+<sc-for list="{{themes}}" as="t" hint-placeholder-count="2">
+<section style="background: {{t.shade}}; border-radius: 28px; padding: 20px 12px; display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0 8px 8px; font-size: 14px; font-weight: 800; letter-spacing: 0.6px; color: {{t.muted}}">{{t.name}}</h2>
+<sc-for list="{{t.items}}" as="n" hint-placeholder-count="3">
+<article style="background: {{t.card}}; color: {{t.fg}}; border-radius: 24px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: {{t.muted}}">
+<span style="width: 24px; height: 24px; border-radius: 12px; background: {{t.accent}}; color: {{t.onAccent}}; display: flex; align-items: center; justify-content: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 16px; line-height: 1; font-weight: 400; letter-spacing: 0">account_balance_wallet</span></span>
+<span style="font-weight: 700">Budžet</span><span>· {{n.when}}</span>
+</div>
+<p style="margin: 4px 0 0; display: flex; align-items: center; gap: 6px; font-size: 15px; line-height: 20px; font-weight: 700"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1; color: {{n.iconColor}}">{{n.icon}}</span>{{n.title}}</p>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{t.muted}}">{{n.text}}</p>
+<span style="margin-top: 4px; font-size: 14px; font-weight: 700; color: {{t.accent}}">{{n.action}}</span>
+</article>
+</sc-for>
+</section>
+</sc-for>
+
+<section style="display: flex; flex-direction: column; gap: 16px; padding: 8px">
+<h2 style="margin: 0; font-size: 22px; line-height: 28px; font-weight: 700">Pravila</h2>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 14px; font-weight: 800">Kanal „Upozorenja o limitu“</span>
+<span style="font-size: 14px; line-height: 20px; color: #42474E">Važnost DEFAULT, bez zvuka noću. Najviše jedno upozorenje po kategoriji za 80% i jedno za 100% u periodu. Tekst uvijek: kategorija, iznos od limita, dani do plate.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 14px; font-weight: 800">Kanal „Analize“</span>
+<span style="font-size: 14px; line-height: 20px; color: #42474E">Važnost LOW, tiho. Dodir otvara analizu perioda.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 14px; font-weight: 800">Mala ikona</span>
+<span style="font-size: 14px; line-height: 20px; color: #42474E">Jednobojni novčanik (account_balance_wallet), boja naglaska = primary. Ikona ispred naslova samo za status: warning ili error, uz tekst.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 14px; font-weight: 800">Ton</span>
+<span style="font-size: 14px; line-height: 20px; color: #42474E">Činjenice, bez uzvika i bez „pažnja“. Grupisanje kad stigne više od dva upozorenja.</span>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1200,"height":820}}'>
+class Component extends DCLogic {
+  renderVals() {
+    function items(warn, err, ok) {
+      return [
+        { when: 'sada', icon: 'warning', iconColor: warn, title: 'Market: potrošeno 80% limita', text: '200,00 € od 250,00 €. Do plate još 14 dana.', action: 'Otvori budžet' },
+        { when: 'prije 2 h', icon: 'error', iconColor: err, title: 'Dostava: limit je prekoračen', text: '62,00 € od 50,00 €, 12,00 € preko limita.', action: 'Pogledaj transakcije' },
+        { when: '25.09.', icon: 'auto_awesome', iconColor: ok, title: 'Analiza perioda je spremna', text: '25.08.–24.09.: tri savjeta za uštedu, procjena do 58,00 € mjesečno.', action: 'Otvori analizu' }
+      ];
+    }
+    return { themes: [
+      { name: 'SVIJETLA', shade: '#F8F9FC', card: '#FFFFFF', fg: '#191C20', muted: '#42474E', accent: '#33618D', onAccent: '#FFFFFF', items: items('#845F00', '#BA1A1A', '#6B5778') },
+      { name: 'TAMNA', shade: '#111418', card: '#282A2F', fg: '#E1E2E8', muted: '#C2C7CF', accent: '#9ECAFC', onAccent: '#003256', items: items('#F4BF4F', '#FFB4AB', '#D7BEE4') }
+    ] };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Komponente</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&amp;display=block">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 1440px; height: 1600px; box-sizing: border-box; padding: 56px; background: {{c.surface}}; color: {{c.onSurface}}; font-family: Manrope, sans-serif; display: flex; flex-direction: column; gap: 32px; overflow: hidden">
+<header style="display: flex; align-items: baseline; gap: 16px">
+<h1 style="margin: 0; font-size: 36px; line-height: 44px; font-weight: 800">Komponente</h1>
+<span style="font-size: 16px; color: {{c.onSurfaceVariant}}">{{themeName}} · sva stanja</span>
+</header>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; align-items: start">
+
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<h2 style="margin: 0; font-size: 22px; line-height: 28px; font-weight: 700">Hero kartica</h2>
+<code style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: {{c.onSurfaceVariant}}">Card(shape = extraLarge, containerColor = primaryContainer)</code>
+</div>
+<span style="font-size: 12px; font-weight: 800; letter-spacing: 0.6px; color: {{c.onSurfaceVariant}}">NORMALNO</span>
+<section style="background: {{c.primaryContainer}}; color: {{c.onPrimaryContainer}}; border-radius: 28px; padding: 24px 24px 20px; display: flex; flex-direction: column; gap: 4px">
+<p style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 600">Danas smiješ da potrošiš</p>
+<p style="margin: 0; font-size: 57px; line-height: 64px; font-weight: 700; letter-spacing: -0.5px; font-variant-numeric: tabular-nums">23,40 €</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 16px"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 20px; line-height: 1; font-weight: 400; letter-spacing: 0">event</span>još 14 dana do plate</div>
+</section>
+<span style="font-size: 12px; font-weight: 800; letter-spacing: 0.6px; color: {{c.onSurfaceVariant}}">PREKORAČENO · surfaceContainerHigh + error</span>
+<section style="background: {{c.surfaceContainerHigh}}; border-radius: 28px; padding: 24px 24px 20px; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; align-items: center; gap: 8px; color: {{c.error}}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 22px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">error</span><span style="font-size: 16px; font-weight: 700">Prekoračeno za</span></div>
+<p style="margin: 0; font-size: 57px; line-height: 64px; font-weight: 700; letter-spacing: -0.5px; font-variant-numeric: tabular-nums; color: {{c.error}}">8,10 €</p>
+<p style="margin: 8px 0 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">Današnji iznos je potrošen. Razlika se raspoređuje na preostale dane.</p>
+</section>
+<span style="font-size: 12px; font-weight: 800; letter-spacing: 0.6px; color: {{c.onSurfaceVariant}}">PRAZNO · NEMA PLATE</span>
+<section style="background: {{c.surfaceContainerHigh}}; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 32px; line-height: 1; font-weight: 400; letter-spacing: 0; color: {{c.primary}}">hourglass_top</span>
+<p style="margin: 4px 0 0; font-size: 22px; line-height: 28px; font-weight: 700">Čeka se prva plata</p>
+<p style="margin: 0; font-size: 14px; line-height: 20px; color: {{c.onSurfaceVariant}}">Dnevni iznos se računa od plate do plate.</p>
+</section>
+
+<div style="display: flex; flex-direction: column; gap: 2px; margin-top: 16px">
+<h2 style="margin: 0; font-size: 22px; line-height: 28px; font-weight: 700">Čip Za provjeru</h2>
+<code style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: {{c.onSurfaceVariant}}">AssistChip · sakriven kad je broj 0</code>
+</div>
+<div style="display: flex">
+<span style="min-height: 40px; padding: 0 8px 0 12px; border-radius: 8px; background: {{c.secondaryContainer}}; color: {{c.onSecondaryContainer}}; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0">fact_check</span>Za provjeru (3)<span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0">chevron_right</span></span>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<h2 style="margin: 0; font-size: 22px; line-height: 28px; font-weight: 700">Traka kategorije</h2>
+<code style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: {{c.onSurfaceVariant}}">Row + StatusChip + Box/LinearProgressIndicator 8 dp</code>
+</div>
+<div style="background: {{c.surfaceContainerLow}}; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column">
+<sc-for list="{{cats}}" as="cat" hint-placeholder-count="5">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border-top: {{cat.divider}}">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 20px; background: {{c.secondaryContainer}}; color: {{c.onSecondaryContainer}}; display: flex; align-items: center; justify-content: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 20px; line-height: 1; font-weight: 400; letter-spacing: 0">{{cat.icon}}</span></span>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 14px; line-height: 20px; font-weight: 700">{{cat.name}}</span>
+<span style="font-size: 12px; line-height: 16px; color: {{c.onSurfaceVariant}}; font-variant-numeric: tabular-nums">{{cat.amounts}}</span>
+</div>
+<span style="display: flex; align-items: center; gap: 4px; height: 28px; padding: 0 8px; border-radius: 8px; flex-shrink: 0; background: {{cat.bg}}; color: {{cat.fg}}; font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 16px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">{{cat.icon2}}</span><span>{{cat.pct}}</span></span>
+</div>
+<div style="height: 8px; border-radius: 4px; background: {{c.surfaceContainerHighest}}; overflow: hidden"><div style="width: {{cat.w}}; height: 8px; border-radius: 4px; background: {{cat.bar}}"></div></div>
+<span style="font-size: 12px; line-height: 16px; font-weight: 600; color: {{cat.noteColor}}">{{cat.note}}</span>
+</div>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 2px; margin-top: 16px">
+<h2 style="margin: 0; font-size: 22px; line-height: 28px; font-weight: 700">Status čip</h2>
+<code style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: {{c.onSurfaceVariant}}">Surface(shape = small) + Icon 16 dp + tekst</code>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{chips}}" as="s" hint-placeholder-count="5">
+<span style="display: flex; align-items: center; gap: 4px; height: 28px; padding: 0 10px; border-radius: 8px; background: {{s.bg}}; color: {{s.fg}}; font-size: 13px; font-weight: 700"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 16px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">{{s.icon}}</span>{{s.label}}</span>
+</sc-for>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<h2 style="margin: 0; font-size: 22px; line-height: 28px; font-weight: 700">Red transakcije</h2>
+<code style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: {{c.onSurfaceVariant}}">ListItem · min 72 dp · iznos tabelarnim ciframa</code>
+</div>
+<div style="background: {{c.surfaceContainerLow}}; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column">
+<sc-for list="{{txs}}" as="t" hint-placeholder-count="5">
+<div style="display: flex; flex-direction: column; border-top: {{t.divider}}">
+<span style="padding: 10px 16px 0; font-size: 11px; font-weight: 800; letter-spacing: 0.6px; color: {{c.onSurfaceVariant}}">{{t.label}}</span>
+<div style="display: flex; align-items: center; gap: 16px; padding: 8px 16px 12px; min-height: 64px; box-sizing: border-box">
+<span style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 20px; background: {{t.avBg}}; color: {{t.avFg}}; display: flex; align-items: center; justify-content: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 20px; line-height: 1; font-weight: 400; letter-spacing: 0">{{t.icon}}</span></span>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 16px; line-height: 22px; font-weight: 600">{{t.m}}</span>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px">
+<span style="display: inline-flex; align-items: center; gap: 4px; min-height: 24px; padding: 0 8px; border-radius: 8px; box-sizing: border-box; font-size: 12px; font-weight: 700; background: {{t.chipBg}}; color: {{t.chipFg}}; border: {{t.chipBorder}}"><sc-if value="{{t.hasChipIcon}}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 14px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">{{t.chipIcon}}</span></sc-if><span>{{t.cat}}</span></span>
+<span style="font-size: 12px; color: {{c.onSurfaceVariant}}">{{t.time}}</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-end; flex-shrink: 0; gap: 2px">
+<span style="font-size: 16px; line-height: 22px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; color: {{t.amtColor}}">{{t.amount}}</span>
+<sc-if value="{{t.hasSub}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12px; color: {{c.onSurfaceVariant}}; font-variant-numeric: tabular-nums; white-space: nowrap">{{t.sub}}</span></sc-if>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 2px; margin-top: 16px">
+<h2 style="margin: 0; font-size: 22px; line-height: 28px; font-weight: 700">Korak dozvole</h2>
+<code style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: {{c.onSurfaceVariant}}">Card(surfaceContainerLow) · nije urađeno / urađeno / blokirano</code>
+</div>
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="3">
+<section style="background: {{c.surfaceContainerLow}}; border: {{s.border}}; border-radius: 16px; padding: 16px; display: flex; gap: 16px; align-items: flex-start">
+<span style="width: 40px; height: 40px; flex-shrink: 0; box-sizing: border-box; border-radius: 20px; border: {{s.dotBorder}}; background: {{s.dotBg}}; color: {{s.dotFg}}; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800"><span aria-hidden="true" style="font-family: {{s.dotFont}}; font-size: {{s.dotSize}}; line-height: 1; font-weight: 700; letter-spacing: 0; font-variation-settings: 'FILL' 1">{{s.dot}}</span></span>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 16px; line-height: 24px; font-weight: 700">{{s.title}}</span>
+<span style="display: flex; align-items: center; gap: 4px; font-size: 14px; line-height: 20px; font-weight: 700; color: {{s.stColor}}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 18px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">{{s.stIcon}}</span>{{s.status}}</span>
+</div>
+</section>
+</sc-for>
+
+<div style="display: flex; flex-direction: column; gap: 2px; margin-top: 16px">
+<h2 style="margin: 0; font-size: 22px; line-height: 28px; font-weight: 700">Navigacija</h2>
+<code style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: {{c.onSurfaceVariant}}">NavigationBar · 4 odredišta · labela max 1 red</code>
+</div>
+<nav aria-label="Primjer navigacije" style="height: 80px; box-sizing: border-box; padding: 12px 0 16px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: {{c.surfaceContainer}}; border-radius: 16px">
+<span style="display: flex; flex-direction: column; align-items: center; gap: 4px; color: {{c.onSurface}}"><span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center; background: {{c.secondaryContainer}}; color: {{c.onSecondaryContainer}}"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0; font-variation-settings: 'FILL' 1">home</span></span><span style="font-size: 12px; font-weight: 800">Početna</span></span>
+<span style="display: flex; flex-direction: column; align-items: center; gap: 4px; color: {{c.onSurfaceVariant}}"><span style="height: 32px; display: flex; align-items: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">receipt_long</span></span><span style="font-size: 12px; font-weight: 600">Transakcije</span></span>
+<span style="display: flex; flex-direction: column; align-items: center; gap: 4px; color: {{c.onSurfaceVariant}}"><span style="height: 32px; display: flex; align-items: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">bar_chart</span></span><span style="font-size: 12px; font-weight: 600">Izvještaji</span></span>
+<span style="display: flex; flex-direction: column; align-items: center; gap: 4px; color: {{c.onSurfaceVariant}}"><span style="height: 32px; display: flex; align-items: center"><span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-weight: 400; letter-spacing: 0">account_balance_wallet</span></span><span style="font-size: 12px; font-weight: 600">Budžet</span></span>
+</nav>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":1440,"height":1600}}'>
+var PAL={light:{primary:'#33618D',onPrimary:'#FFFFFF',primaryContainer:'#D1E4FF',onPrimaryContainer:'#0F4A73',secondary:'#535F70',onSecondary:'#FFFFFF',secondaryContainer:'#D7E3F7',onSecondaryContainer:'#3B4858',tertiary:'#6B5778',onTertiary:'#FFFFFF',tertiaryContainer:'#F2DAFF',onTertiaryContainer:'#523F5F',error:'#BA1A1A',onError:'#FFFFFF',errorContainer:'#FFDAD6',onErrorContainer:'#93000A',surface:'#F8F9FC',onSurface:'#191C20',surfaceVariant:'#DEE3EB',onSurfaceVariant:'#42474E',outline:'#72777F',outlineVariant:'#C2C7CF',surfaceContainerLowest:'#FFFFFF',surfaceContainerLow:'#F2F3F7',surfaceContainer:'#ECEEF1',surfaceContainerHigh:'#E6E8EB',surfaceContainerHighest:'#E1E2E6',inverseSurface:'#2E3135',inverseOnSurface:'#EFF0F4',inversePrimary:'#9ECAFC',scrim:'rgba(0,0,0,0.32)',disabledBg:'rgba(25,28,32,0.12)',disabledFg:'rgba(25,28,32,0.38)',ok:'#2E6A44',onOk:'#FFFFFF',okContainer:'#C8EECF',onOkContainer:'#0F5130',warning:'#845F00',onWarning:'#FFFFFF',warningContainer:'#FFDF9F',onWarningContainer:'#5F4400'},dark:{primary:'#9ECAFC',onPrimary:'#003256',primaryContainer:'#154A72',onPrimaryContainer:'#D1E4FF',secondary:'#BBC7DB',onSecondary:'#253140',secondaryContainer:'#3B4858',onSecondaryContainer:'#D7E3F7',tertiary:'#D7BEE4',onTertiary:'#3B2948',tertiaryContainer:'#523F5F',onTertiaryContainer:'#F2DAFF',error:'#FFB4AB',onError:'#690005',errorContainer:'#93000A',onErrorContainer:'#FFDAD6',surface:'#111418',onSurface:'#E1E2E8',surfaceVariant:'#42474E',onSurfaceVariant:'#C2C7CF',outline:'#8C9199',outlineVariant:'#42474E',surfaceContainerLowest:'#0C0E12',surfaceContainerLow:'#191C20',surfaceContainer:'#1D2024',surfaceContainerHigh:'#282A2F',surfaceContainerHighest:'#33353A',inverseSurface:'#E1E2E8',inverseOnSurface:'#2E3135',inversePrimary:'#33618D',scrim:'rgba(0,0,0,0.6)',disabledBg:'rgba(225,226,232,0.12)',disabledFg:'rgba(225,226,232,0.38)',ok:'#93D5A6',onOk:'#00391D',okContainer:'#15522F',onOkContainer:'#AFF2C1',warning:'#F4BF4F',onWarning:'#412D00',warningContainer:'#5F4400',onWarningContainer:'#FFDF9F'}};
+function eur(n){var s=Math.abs(n).toFixed(2).split('.');s[0]=s[0].replace(/\B(?=(\d{3})+(?!\d))/g,'.');return s[0]+','+s[1]+' €';}
+function st(sp,lim,c){
+  if(lim==null) return {icon2:'all_inclusive',fg:c.onSurfaceVariant,bg:c.surfaceContainerHighest,bar:c.outline,pct:'',w:'0%',note:'Bez limita',noteColor:c.onSurfaceVariant};
+  var p=Math.round(sp/lim*100), w=Math.min(p,100)+'%';
+  if(sp>lim) return {icon2:'error',fg:c.onErrorContainer,bg:c.errorContainer,bar:c.error,pct:p+'%',w:w,note:'Preko limita za '+eur(sp-lim),noteColor:c.error};
+  if(sp===lim) return {icon2:'error',fg:c.onErrorContainer,bg:c.errorContainer,bar:c.error,pct:p+'%',w:w,note:'Limit dostignut',noteColor:c.error};
+  if(p>=80) return {icon2:'warning',fg:c.onWarningContainer,bg:c.warningContainer,bar:c.warning,pct:p+'%',w:w,note:'Blizu limita · ostalo '+eur(lim-sp),noteColor:c.warning};
+  return {icon2:'check_circle',fg:c.onOkContainer,bg:c.okContainer,bar:c.primary,pct:p+'%',w:w,note:'U redu · ostalo '+eur(lim-sp),noteColor:c.onSurfaceVariant};
+}
+class Component extends DCLogic {
+  renderVals() {
+    var dark = (this.props.theme ?? 'light') === 'dark';
+    var c = dark ? PAL.dark : PAL.light;
+    var CATS = [['Market','shopping_cart',180,250],['Restorani i kafići','restaurant',96,100],['Gotovina','payments',100,100],['Dostava','delivery_dining',62,50],['Ostalo','category',14.2,null]];
+    var cats = CATS.map(function (k, i) {
+      return Object.assign({ name: k[0], icon: k[1], amounts: k[3] == null ? eur(k[2]) + ' potrošeno' : eur(k[2]) + ' od ' + eur(k[3]), divider: i ? ('1px solid ' + c.outlineVariant) : 'none' }, st(k[2], k[3], c));
+    });
+    var chips = [
+      { label: 'U redu · 72%', icon: 'check_circle', bg: c.okContainer, fg: c.onOkContainer },
+      { label: 'Blizu limita · 96%', icon: 'warning', bg: c.warningContainer, fg: c.onWarningContainer },
+      { label: 'Limit dostignut · 100%', icon: 'error', bg: c.errorContainer, fg: c.onErrorContainer },
+      { label: 'Preko limita · 124%', icon: 'error', bg: c.errorContainer, fg: c.onErrorContainer },
+      { label: 'Bez limita', icon: 'all_inclusive', bg: c.surfaceContainerHighest, fg: c.onSurfaceVariant }
+    ];
+    var T = [
+      { label: 'EUR · POTVRĐENO', m: 'Maxi', cat: 'Market', icon: 'shopping_cart', time: '14:32', amt: '12,50 €' },
+      { label: 'STRANA VALUTA + AI PRIJEDLOG', m: 'Pekara Zlatni klas', cat: 'Restorani i kafići', icon: 'restaurant', time: '08:15', amt: '25,00 KM', sub: '≈ 12,78 €', kind: 'ai' },
+      { label: 'PRENOS', m: 'Prenos na štednju', cat: 'Prenos', icon: 'sync_alt', time: '25.09.', amt: '300,00 €', sub: 'van budžeta', kind: 'transfer' },
+      { label: 'PLATA', m: 'Uplata plate', cat: 'Plata', icon: 'work', time: '25.09.', amt: '+1.500,00 €', kind: 'salary' },
+      { label: 'BEZ KURSA', m: 'Steam', cat: 'Zabava', icon: 'local_activity', time: '27.09.', amt: '14,99 USD', sub: 'bez kursa', kind: 'norate' }
+    ];
+    var txs = T.map(function (t, i) {
+      var ai = t.kind === 'ai', sal = t.kind === 'salary', tr = t.kind === 'transfer', nr = t.kind === 'norate';
+      return {
+        label: t.label, m: t.m, cat: t.cat, icon: t.icon, time: t.time, amount: t.amt, hasSub: !!t.sub, sub: t.sub || '',
+        avBg: sal ? c.okContainer : c.secondaryContainer, avFg: sal ? c.onOkContainer : c.onSecondaryContainer,
+        amtColor: sal ? c.ok : (tr ? c.onSurfaceVariant : c.onSurface),
+        hasChipIcon: ai || sal || tr, chipIcon: ai ? 'auto_awesome' : (sal ? 'work' : 'sync_alt'),
+        chipBg: ai ? 'transparent' : (sal ? c.okContainer : c.surfaceContainerHighest),
+        chipFg: ai ? c.tertiary : (sal ? c.onOkContainer : c.onSurfaceVariant),
+        chipBorder: ai ? ('1px dashed ' + c.tertiary) : '1px solid transparent',
+        divider: i ? ('1px solid ' + c.outlineVariant) : 'none'
+      };
+    });
+    var MS = "'Material Symbols Rounded'";
+    var steps = [
+      { title: 'Slanje notifikacija', border: '1px solid transparent', dotBorder: '2px solid ' + c.outline, dotBg: 'transparent', dotFg: c.onSurfaceVariant, dot: '2', dotFont: 'Manrope, sans-serif', dotSize: '16px', stIcon: 'radio_button_unchecked', status: 'Nije urađeno', stColor: c.onSurfaceVariant },
+      { title: 'Pristup notifikacijama', border: '1px solid transparent', dotBorder: 'none', dotBg: c.okContainer, dotFg: c.onOkContainer, dot: 'check', dotFont: MS, dotSize: '22px', stIcon: 'check_circle', status: 'Uključeno', stColor: c.ok },
+      { title: 'Pristup notifikacijama', border: '1px solid ' + c.error, dotBorder: 'none', dotBg: c.errorContainer, dotFg: c.onErrorContainer, dot: 'block', dotFont: MS, dotSize: '22px', stIcon: 'error', status: 'Android je blokirao ovu dozvolu', stColor: c.error }
+    ];
+    return { c: c, themeName: dark ? 'Tamna tema' : 'Svijetla tema', cats: cats, chips: chips, txs: txs, steps: steps };
+  }
+}
+</script>
+</body>
+</html>
