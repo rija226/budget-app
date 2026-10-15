@@ -41,7 +41,7 @@ object Notify {
         channels(ctx)
         val pi = open(ctx, route, id)
         val n = NotificationCompat.Builder(ctx, channel)
-            .setSmallIcon(R.drawable.ic_notification)
+            .setSmallIcon(R.drawable.ic_stat_budzet)
             .setColor(0xFF33618D.toInt())
             .setContentTitle(title)
             .setContentText(text)
