@@ -97,6 +97,16 @@ interface RawNotificationDao {
     @Query("SELECT * FROM raw_notifications WHERE status IN ('NEW', 'FAILED') ORDER BY postedAt")
     suspend fun unprocessed(): List<RawNotification>
 
+    /** Earlier notifications with the same text since [since]: re-posts of one notification. */
+    @Query(
+        "SELECT COUNT(*) FROM raw_notifications WHERE packageName = :pkg AND title IS :title AND text IS :text " +
+            "AND id < :id AND postedAt >= :since",
+    )
+    suspend fun repeats(pkg: String, title: String?, text: String?, id: Long, since: Long): Int
+
+    @Query("DELETE FROM raw_notifications WHERE packageName NOT IN (:keep)")
+    suspend fun deleteExcept(keep: List<String>)
+
     @Query("UPDATE raw_notifications SET status = :status, transactionId = :txId WHERE id = :id")
     suspend fun setStatus(id: Long, status: RawStatus, txId: Long? = null)
 

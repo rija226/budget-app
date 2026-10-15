@@ -140,7 +140,7 @@ fun PodesavanjaScreen(tick: Int, state: PodesavanjaState, actions: PodesavanjaAc
     )
 }
 
-private val SALARY_SOURCES = listOf("any" to "Bilo koja banka", "bankA" to "Banka A", "bankB" to "Banka B")
+private val SALARY_SOURCES = listOf("any" to "Bilo koja banka", "bankA" to "Erste")
 
 @Composable
 fun PodesavanjaContent(

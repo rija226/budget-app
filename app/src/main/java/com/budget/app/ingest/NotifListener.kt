@@ -14,8 +14,7 @@ class NotifListener : NotificationListenerService() {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     override fun onNotificationPosted(sbn: StatusBarNotification) {
-        // ponytail: faza 1 bilježi sve aplikacije; filter na poznate izvore dolazi u fazi 2
-        if (sbn.packageName == packageName) return
+        if (sourceOf(sbn.packageName, sbn.tag, isDebug()) == null) return
         val n = sbn.notification
         if (n.flags and (Notification.FLAG_ONGOING_EVENT or Notification.FLAG_GROUP_SUMMARY) != 0) return
         val extras = n.extras

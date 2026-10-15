@@ -13,14 +13,18 @@ import com.budget.app.data.Transaction
 import com.budget.app.data.TxType
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import java.time.ZoneId
 
 const val WALLET_PACKAGE = "com.google.android.apps.walletnfcrel"
 private val TEST_SOURCES = setOf("wallet", "bankA", "bankB")
 
-// ponytail: paketi obje banke upisuju se u fazi 2, kad sirovi log pokaže koji su
-private val BANK_PACKAGES = mapOf<String, String>()
+// ponytail: samo Erste; HYPO (com.comtrade.HYPOnetmBankarstvoBiH) vlasnik rijetko koristi, dodaje se kao bankB ako zatreba
+private val BANK_PACKAGES = mapOf("hr.erstebank.george" to "bankA")
 
-/** "wallet", "bankA", "bankB" or null for apps that are only logged (phase 1 logs every app). */
+/** Packages the listener records; logs of everything else are deleted by "Obradi ponovo sve". */
+val KNOWN_PACKAGES = BANK_PACKAGES.keys + WALLET_PACKAGE + "com.android.shell"
+
+/** "wallet", "bankA", "bankB" or null for apps we don't read. */
 fun sourceOf(pkg: String, tag: String?, debug: Boolean): String? = when {
     pkg == WALLET_PACKAGE -> "wallet"
     debug && pkg == "com.android.shell" && tag in TEST_SOURCES -> tag
@@ -30,36 +34,47 @@ fun sourceOf(pkg: String, tag: String?, debug: Boolean): String? = when {
 fun sourceLabel(source: String): String = source.split('+').joinToString(" + ") {
     when (it) {
         "wallet" -> "Google Wallet"
-        "bankA" -> "Banka A"
+        "bankA" -> "Erste"
         "bankB" -> "Banka B"
         "manual" -> "Ručni unos"
         else -> it
     }
 }
 
-private fun Context.isDebug() = applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
+fun Context.isDebug() = applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
 
 /** Raw notification -> transaction: parse, merge Wallet + bank duplicates, categorize, then the follow-ups in [Repo.afterChange]. */
 object Pipeline {
     private val lock = Mutex()
     private const val MERGE_WINDOW_MS = 10 * 60_000L
+    // ponytail: Wallet istu notifikaciju objavi ponovo (odmah i kad stigne sljedeće plaćanje); isti tekst u 12 h = ponavljanje.
+    // Dvije iste kafe u 12 h: druga dolazi samo preko Erste notifikacije.
+    private const val REPEAT_WINDOW_MS = 12 * 3_600_000L
 
     suspend fun process(ctx: Context, raw: RawNotification) = lock.withLock { processLocked(ctx, raw) }
 
-    /** "Obradi ponovo sve": new and unrecognized notifications from known sources; returns how many became transactions. */
+    /** "Obradi ponovo sve": drops logs of unknown apps, then new and unrecognized notifications; returns how many became transactions. */
     suspend fun reprocess(ctx: Context): Int = lock.withLock {
-        AppDatabase.get(ctx).rawNotifications().unprocessed().count { processLocked(ctx, it) }
+        val dao = AppDatabase.get(ctx).rawNotifications()
+        dao.deleteExcept(KNOWN_PACKAGES.toList())
+        dao.unprocessed().count { processLocked(ctx, it) }
     }
 
     private suspend fun processLocked(ctx: Context, raw: RawNotification): Boolean {
         val db = AppDatabase.get(ctx)
         val source = sourceOf(raw.packageName, raw.tag, ctx.isDebug()) ?: return false
-        val p = parseGeneric(raw.title, raw.text)
+        if (raw.title in NOISE_TITLES ||
+            db.rawNotifications().repeats(raw.packageName, raw.title, raw.text, raw.id, raw.postedAt - REPEAT_WINDOW_MS) > 0
+        ) {
+            db.rawNotifications().setStatus(raw.id, RawStatus.IGNORED)
+            return false
+        }
+        val p = parse(source, raw.title, raw.text)
         if (p == null) {
             db.rawNotifications().setStatus(raw.id, RawStatus.FAILED)
             return false
         }
-        val at = raw.postedAt
+        val at = p.at?.atZone(ZoneId.systemDefault())?.toInstant()?.toEpochMilli() ?: raw.postedAt
         db.transactions().mergeCandidate(p.amountMinor, p.currency, at, at - MERGE_WINDOW_MS, at + MERGE_WINDOW_MS, source)?.let { t ->
             // CLAUDE.md: trgovac iz Walleta (čistiji naziv), sve ostalo iz banke
             val wallet = source == "wallet"

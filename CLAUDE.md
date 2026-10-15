@@ -149,7 +149,7 @@ Svaka faza se završava aplikacijom koja se instalira na telefon i radi.
 
 - [x] Faza 0 — `installDebug` radi na emulatoru `budget`; na pravi telefon instalirano ručno preko `app-debug.apk` (01.10.2026), `installDebug` preko USB-a nije probano
 - [ ] Faza 1 — kod gotov, na telefonu od 01.10.2026, skuplja primjere. Banke šalju tek od ~10.10.2026 (plata).
-- [ ] Faza 2 — gotovo sve osim čitača po banci: `tag` u bazi (v2), filter na izvore (`ingest/Pipeline.kt`: Wallet paket + u debug buildu `com.android.shell` sa tagom), dedup Wallet + banka (±10 min, provjereno na emulatoru), kursevi, `transactions`, „Obradi ponovo sve". Privremeno radi **opšti čitač** `parseGeneric` (`ingest/Parser.kt`). **Ostaje poslije 10.10.:** upisati pakete obje banke u `BANK_PACKAGES`, napisati čitač po banci na stvarnim primjerima (fixture testovi), pa brisanje logova drugih aplikacija.
+- [ ] Faza 2 — **samo Erste** (odluka vlasnika 15.10.2026: HYPO kartica se rijetko koristi, ne čita se). Erste George (`hr.erstebank.george`) = izvor `bankA`, prikaz „Erste"; čitač `parseErste` (kartica + bankomat, vrijeme iz teksta jer George kasni i do ~25 min; „Stanje računa" se ignoriše). Wallet = `parseGeneric`. Wallet istu notifikaciju objavi više puta, pa se isti naslov + tekst istog paketa u 12 h ignoriše. Listener bilježi samo poznate izvore; „Obradi ponovo sve" briše logove ostalih aplikacija. **Ostaje:** Erste priliv/plata nema primjer (plata stiže na Erste); dok ne stigne, takva poruka ide u „Za provjeru" (FAILED), pa napisati čitač i test.
 - [x] Faza 3 — kategorije, `merchant_rules` (ispravka se pamti), lista i izmjena, ručni unos (i iz neprepoznate notifikacije), „Za provjeru" (AI, bez kategorije, neprepoznato, bez kursa).
 - [x] Faza 4 — periodi od plate do plate (`budget/Budget.kt`), ručna plata („Označi platu ručno"), pravilo za platu, budžet perioda, dnevni limit, upozorenja 80/100% (provjereno na emulatoru).
 - [x] Faza 5 — izvještaji računaju iz transakcija (`ui/Report.kt` + test).
@@ -158,7 +158,9 @@ Svaka faza se završava aplikacijom koja se instalira na telefon i radi.
 
 **UI:** svi koraci iz `budzet-design/DESIGN.md` gotovi i povezani sa pravim podacima (`ui/Live.kt` pravi stanja ekrana iz Room-a i Settings-a; `ui/App.kt` je navigacija + akcije preko `data/Repo.kt`). `ui/Sample.kt` služi samo previewima. Stanje ekrana (tab, filteri) se čuva pri povratku iz detalja (`rememberSaveableStateHolder`). Notifikacija otvara ekran preko extra `route` (`Notify.EXTRA_ROUTE`). Previewi se bez Android Studija gledaju na emulatoru: `adb shell am start -n com.budget.app/androidx.compose.ui.tooling.PreviewActivity --es composable com.budget.app.ui.PocetnaKt.PocetnaNormalPreview` (tamno: `adb shell cmd uimode night yes`, font: `adb shell settings put system font_scale 2.0`, visina: `adb shell wm size 1080x5600`, pa `wm size reset`).
 
-**Otvoreno** (saznaje se u fazi 1): nazivi paketa obje banke, da li banke šalju push ili SMS, da li Wallet notifikacija sadrži iznos.
+**Ikonica:** izvor je `budzet-ikonica/` (SVG, Play 512 px); Android resursi su kopirani u `app/src/main/res` (adaptivna `mipmap-anydpi-v26`, monochrome za tematske ikone, `ic_stat_budzet` za notifikacije).
+
+**Saznato u fazi 1:** banke šalju push iz svojih aplikacija (ne SMS). Wallet: naslov = trgovac, tekst = `€5.80 with Visa Classic ••XXXX` (ili `BAM143.03 …`). Erste: `DD.MM.YYYY. u HH:MM:SS sati obrađena je transakcija na prodajnom mjestu X u vrijednosti od 8,97 EUR karticom …` (bankomat: `napravljena je transakcija na bankomatu …`).
 
 ## Kako raditi na projektu
 
